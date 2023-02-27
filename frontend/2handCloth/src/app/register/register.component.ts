@@ -7,8 +7,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  
-  constructor(private formBuilder: FormBuilder, public registrationForm: FormGroup) {}
+  registrationForm!: FormGroup
+  constructor(private formBuilder: FormBuilder) {}
   ngOnInit(): void {
     this.registrationForm = this.formBuilder.group(
       {
