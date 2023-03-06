@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const db = require('./config/database');
 const registerController = require('./controllers/registerUserController');
@@ -12,6 +13,8 @@ db.on('error', console.error.bind(console, 'Erro de conexão com MongoDB:'));
 
 db.once('open', () => {
   console.log('Conexão bem-sucedida com MongoDB');
+
+  app.use(cors());
 
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());

@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
 
   passwordMatchValidator(formGroup: any) {
     const email = formGroup.get('confirmPassword').value;
-    const password = formGroup.get('password').value;
+    const password = formGroup.get('password').value; 
     //Fazer a lógica do login aqui
     return true;
   }
