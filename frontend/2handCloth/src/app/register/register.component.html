@@ -12,10 +12,10 @@
                   <input
                     type="text"
                     class="form-control form-control-lg"
-                    formControlName="name"
-                    id="name"
+                    formControlName="nome"
+                    id="nome"
                   />
-                  <label class="form-label" for="name">Your Name</label>
+                  <label class="form-label" for="nome">Your Name</label>
                 </div>
 
                 <div class="form-outline mb-4">
@@ -43,8 +43,8 @@
                 <mat-form-field appearance="fill" class="selector">
                   <div>
                     <mat-select formControlName="genero" name="genero">
-                      <mat-option [value]="'Masculino'"> Masculino </mat-option>
-                      <mat-option [value]="'Feminino'"> Feminino </mat-option>
+                      <mat-option [value]="'M'"> Masculino </mat-option>
+                      <mat-option [value]="'F'"> Feminino </mat-option>
                       <mat-option [value]="'Outro'"> Outro </mat-option>
                     </mat-select>
                   </div>

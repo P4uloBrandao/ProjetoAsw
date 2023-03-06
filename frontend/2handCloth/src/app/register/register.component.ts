@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -8,19 +9,30 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  registrationForm!: FormGroup
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  registrationForm!: FormGroup;
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private http: HttpClient
+  ) {}
   ngOnInit(): void {
     this.registrationForm = this.formBuilder.group(
       {
-        name: ['', [Validators.required]],
+        nome: ['', [Validators.required]],
         email: ['', [Validators.required, Validators.email]],
-        dataNascimento:['',[Validators.required]],
-        genero: ['',[Validators.required]],
-        morada: ['',[Validators.required]],
-        localidade: ['',[Validators.required]],
-        codigoPostal: ['',[Validators.required]],
-        telefone: ['',[Validators.required, Validators.min(100000000), Validators.max(999999999)]],
+        dataNascimento: ['', [Validators.required]],
+        genero: ['', [Validators.required]],
+        morada: ['', [Validators.required]],
+        localidade: ['', [Validators.required]],
+        codigoPostal: ['', [Validators.required]],
+        telefone: [
+          '',
+          [
+            Validators.required,
+            Validators.min(100000000),
+            Validators.max(999999999),
+          ],
+        ],
         password: ['', [Validators.required, Validators.minLength(8)]],
         confirmPassword: ['', Validators.required],
       },
@@ -35,18 +47,24 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.registrationForm.valid){
-      let users=[];
-      let localS= localStorage.getItem('users')
-      if(localS){
-        users= JSON.parse(localS)
+    if (this.registrationForm.valid) {
+      let users = [];
+      let localS = localStorage.getItem('users');
+      if (localS) {
+        users = JSON.parse(localS);
       }
-      users.push(this.registrationForm.value)
-      localStorage.setItem('users', JSON.stringify(users))
-      // this.router.navigate(['/login'])
-      console.log('success');
-      
+      users.push(this.registrationForm.value);
+      // localStorage.setItem('users', JSON.stringify(users))
+      // // this.router.navigate(['/login'])
+      // console.log('success');
+      this.http
+        .post('http://localhost:8080/register', this.registrationForm.value)
+        .subscribe((res) => {
+          console.log(res);
+          
+        }, err => {
+          console.log(err);
+        });
     }
-    
   }
 }
