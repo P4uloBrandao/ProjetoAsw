@@ -11,4 +11,6 @@ router.put('/:id', userController.updateUser);
 // Rota para excluir um usuário pelo ID
 router.delete('/:id', userController.deleteUser);
 
+router.get('/', userController.getAllUsers);
+
 module.exports = router;
