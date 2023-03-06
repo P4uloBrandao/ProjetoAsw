@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
         morada: ['',[Validators.required]],
         localidade: ['',[Validators.required]],
         codigoPostal: ['',[Validators.required]],
-        telefone: ['',[Validators.required, Validators.min(111111111), Validators.max(999999999)]],
+        telefone: ['',[Validators.required, Validators.min(100000000), Validators.max(999999999)]],
         password: ['', [Validators.required, Validators.minLength(8)]],
         confirmPassword: ['', Validators.required],
       },
@@ -43,7 +43,9 @@ export class RegisterComponent implements OnInit {
       }
       users.push(this.registrationForm.value)
       localStorage.setItem('users', JSON.stringify(users))
-      this.router.navigate(['/login'])
+      // this.router.navigate(['/login'])
+      console.log('success');
+      
     }
     
   }

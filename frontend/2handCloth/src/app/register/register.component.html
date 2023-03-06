@@ -41,20 +41,57 @@
                 </div>
 
                 <mat-form-field appearance="fill" class="selector">
-                <div>
-                  <mat-select formControlName="dataNascimento" name="genero" >
-                    <mat-option [value]="'Masculino'">
-                      Masculino
-                    </mat-option>
-                    <mat-option [value]="'Feminino'">
-                      Feminino
-                    </mat-option>
-                    <mat-option [value]="'Outro'">
-                      Outro
-                    </mat-option>
-                  </mat-select>
+                  <div>
+                    <mat-select formControlName="genero" name="genero">
+                      <mat-option [value]="'Masculino'"> Masculino </mat-option>
+                      <mat-option [value]="'Feminino'"> Feminino </mat-option>
+                      <mat-option [value]="'Outro'"> Outro </mat-option>
+                    </mat-select>
+                  </div>
+                </mat-form-field>
+
+                <div class="form-outline mb-4">
+                  <input
+                    type="text"
+                    class="form-control form-control-lg"
+                    formControlName="morada"
+                    id="morada"
+                  />
+                  <label class="form-label" for="morada">Morada</label>
                 </div>
-              </mat-form-field>
+
+                <div class="form-outline mb-4">
+                  <input
+                    type="text"
+                    class="form-control form-control-lg"
+                    formControlName="localidade"
+                    id="localidade"
+                  />
+                  <label class="form-label" for="localidade">Localidade</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input
+                    type="text"
+                    class="form-control form-control-lg"
+                    formControlName="codigoPostal"
+                    id="codigoPostal"
+                  />
+                  <label class="form-label" for="codigoPostal"
+                    >Código Postal</label
+                  >
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input
+                    type="tel"
+                    class="form-control form-control-lg"
+                    formControlName="telefone"
+                    id="telefone"
+                    pattern="[0-9]{9}"
+                  />
+                  <label class="form-label" for="telefone">Telefone</label>
+                </div>
 
                 <div class="form-outline mb-4">
                   <input
