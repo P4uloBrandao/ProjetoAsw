@@ -1,14 +1,16 @@
-<div class="container menu">
-  <div class="row">
-    <div class="col-md-10">
-      2HandCloth
+<mat-drawer-container class="site-container">
+  <mat-drawer mode="side" opened>
+    <div class="container">
+      <div class="col sidebar">
+        <div class="row" routerLink="/home" routerLinkActive="active" class="logo">2HandCloth</div>
+        <div class="row">
+          <a routerLink="/login" routerLinkActive="active">Login</a>
+        </div>
+        <div class="row">
+          <a routerLink="/register" routerLinkActive="active">Resgister</a>
+        </div>
+      </div>
     </div>
-    <div class="col-md-1">
-      <a routerLink="/login" routerLinkActive="active">Login</a> 
-    </div>
-    <div class="col-md-1">
-      <a routerLink="/register" routerLinkActive="active">Resgister</a> 
-    </div>
-  </div>
-</div>
-<router-outlet></router-outlet>
+  </mat-drawer>
+  <mat-drawer-content><router-outlet></router-outlet></mat-drawer-content>
+</mat-drawer-container>

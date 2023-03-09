@@ -6,6 +6,7 @@ const registerController = require('./controllers/registerUserController');
 const loginController = require('./controllers/loginController');
 const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
+require("dotenv").config();
 
 const app = express();
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { HttpService } from '../shared/httpService/http.service';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private http: HttpClient
+    private http: HttpService
   ) {}
   ngOnInit(): void {
     this.registrationForm = this.formBuilder.group(
@@ -48,23 +49,22 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     if (this.registrationForm.valid) {
-      let users = [];
-      let localS = localStorage.getItem('users');
-      if (localS) {
-        users = JSON.parse(localS);
-      }
-      users.push(this.registrationForm.value);
       // localStorage.setItem('users', JSON.stringify(users))
       // // this.router.navigate(['/login'])
       // console.log('success');
+      const emailControl = this.registrationForm.get('email');
+      const emailValue = emailControl!.value.toLowerCase();
+      emailControl!.patchValue(emailValue);
+      
       this.http
         .post('http://localhost:8080/register', this.registrationForm.value)
         .subscribe((res) => {
           console.log(res);
-          
+          this.router.navigate(['/login'])
         }, err => {
           console.log(err);
         });
+
     }
   }
 }
