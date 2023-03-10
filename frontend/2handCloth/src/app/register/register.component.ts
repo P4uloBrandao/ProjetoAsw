@@ -57,7 +57,7 @@ export class RegisterComponent implements OnInit {
       emailControl!.patchValue(emailValue);
       
       this.http
-        .post('http://localhost:8080/register', this.registrationForm.value)
+        .register(this.registrationForm.value)
         .subscribe((res) => {
           console.log(res);
           this.router.navigate(['/login'])

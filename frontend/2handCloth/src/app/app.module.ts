@@ -12,10 +12,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { HomeComponent } from './home/home.component';
+import { LoungeComponent } from './lounge/lounge.component';
 
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent, HomeComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, HomeComponent, LoungeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
