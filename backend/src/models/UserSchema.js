@@ -40,9 +40,9 @@ const UserSchema = new mongoose.Schema({
     required: true
   },
   preferencias: {
-    categorias: [String],
     tamanhos: [String],
-    marcas: [String]
+    categorias: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Categoria' }],
+    marcas: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Marca' }]
   }
 });
 

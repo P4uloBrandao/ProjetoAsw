@@ -1,0 +1,13 @@
+Para armazenar as imagens:
+A seguir estão algumas maneiras de como você pode usar o MongoDB e o Cloudinary juntos em seu projeto MEAN:
+
+Armazenar as informações das imagens no MongoDB e o arquivo em si no Cloudinary:
+Você pode armazenar as informações relevantes da imagem no MongoDB, como nome do arquivo, extensão, tamanho e URL de acesso. Em seguida, carregue a imagem no Cloudinary e salve a URL de acesso na sua coleção do MongoDB.
+
+Fazer upload das imagens para o Cloudinary e armazenar apenas as URLs no MongoDB:
+Em vez de armazenar as informações das imagens no MongoDB, você pode fazer upload das imagens diretamente para o Cloudinary e armazenar apenas as URLs de acesso no MongoDB. Isso pode economizar espaço no seu banco de dados e melhorar a eficiência do processo de carregamento de imagens.
+
+Usar o Cloudinary como um proxy para o MongoDB:
+Você pode usar o Cloudinary como um intermediário para a recuperação de imagens do MongoDB. Nesse caso, você armazenaria as imagens diretamente no MongoDB e usaria o Cloudinary para entregar as imagens para o cliente. Isso pode ser útil se você quiser aplicar manipulações de imagem em tempo real ou adicionar recursos como cache e otimização de imagens.
+
+Independentemente do método escolhido, é importante lembrar que o Cloudinary pode ser integrado facilmente com o MongoDB e outras tecnologias usadas em aplicações MEAN. Consulte a documentação do Cloudinary para obter mais informações e exemplos de código para ajudar na integração.
