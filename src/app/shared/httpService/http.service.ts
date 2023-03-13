@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class HttpService{
   constructor(private http: HttpClient) {}
 
-  private url = 'http://localhost:8080';
+  private url = 'http://13.39.18.106:8080';
 
   public login(data: any) : Observable<any>{
     return this.http.post(this.url+"/login", data)
