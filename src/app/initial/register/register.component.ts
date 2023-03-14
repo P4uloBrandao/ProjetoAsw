@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpService } from 'src/app/shared/httpService/http.service';
@@ -8,8 +8,9 @@ import { HttpService } from 'src/app/shared/httpService/http.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent implements OnInit {
-  registrationForm!: FormGroup;
+export class RegisterComponent implements OnInit, OnDestroy{
+  public registrationForm!: FormGroup;
+  private observable: any;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -40,6 +41,12 @@ export class RegisterComponent implements OnInit {
     );
   }
 
+  ngOnDestroy(): void {
+    if (this.observable) {
+      this.observable.unsubscribe();
+    }
+  }
+
   passwordMatchValidator(formGroup: any) {
     const password = formGroup.get('password').value;
     const confirmPassword = formGroup.get('confirmPassword').value;
@@ -55,7 +62,7 @@ export class RegisterComponent implements OnInit {
       const emailValue = emailControl!.value.toLowerCase();
       emailControl!.patchValue(emailValue);
       
-      this.http
+      this.observable=this.http
         .register(this.registrationForm.value)
         .subscribe((res) => {
           this.router.navigate(['/login'])

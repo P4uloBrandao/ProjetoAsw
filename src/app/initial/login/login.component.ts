@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { HttpService } from 'src/app/shared/httpService/http.service';
 
 @Component({
@@ -8,10 +9,11 @@ import { HttpService } from 'src/app/shared/httpService/http.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
-  loginForm!: FormGroup;
-  userId: any;
-  user: any;
+export class LoginComponent implements OnInit, OnDestroy {
+  public loginForm!: FormGroup;
+  private userId: any;
+  private user: any;
+  private observable: any;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -24,11 +26,17 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
+  ngOnDestroy(): void {
+    if (this.observable) {
+      this.observable.unsubscribe();
+    }
+  }
+  
   onSubmit() {
     const email = this.loginForm.get('email')?.value;
     const password = this.loginForm.get('password')?.value;
     if (email && password) {
-      this.http
+      this.observable = this.http
         .login({
           email: email,
           password: password,

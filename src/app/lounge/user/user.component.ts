@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpService } from 'src/app/shared/httpService/http.service';
 
@@ -7,11 +7,12 @@ import { HttpService } from 'src/app/shared/httpService/http.service';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss'],
 })
-export class UserComponent implements OnInit{
+export class UserComponent implements OnInit, OnDestroy{
   public userInfo: any;
   public local: any;
   public userForm!: FormGroup;
   public preferenceForm!: FormGroup;
+  private observable: any;
   constructor(private http: HttpService, private formBuilder: FormBuilder,) {
     this.local = (localStorage.getItem('currentUser'));
   }
@@ -19,7 +20,7 @@ export class UserComponent implements OnInit{
   ngOnInit(): void {
     if (this.local) {
       this.local = JSON.parse(this.local);
-      this.http.getUserById(this.local.token).subscribe((response) => {
+      this.observable = this.http.getUserById(this.local.token).subscribe((response) => {
         this.userInfo = response.data;
         this.userForm = this.formBuilder.group(
           {
@@ -49,5 +50,11 @@ export class UserComponent implements OnInit{
         marca: ['', [Validators.required]],
       }
     )
+  }
+
+  ngOnDestroy(): void {
+    if (this.observable) {
+      this.observable.unsubscribe();
+    }
   }
 }

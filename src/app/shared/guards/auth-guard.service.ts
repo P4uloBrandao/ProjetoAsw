@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { HttpService } from '../httpService/http.service';
 import jwtDecode from 'jwt-decode';
@@ -6,16 +6,22 @@ import jwtDecode from 'jwt-decode';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuardService implements CanActivate {
+export class AuthGuardService implements CanActivate, OnDestroy{
+  private observable: any;
   constructor(private http: HttpService, private router: Router) {}
 
+  ngOnDestroy(): void {
+    if (this.observable) {
+      this.observable.unsubscribe();
+    }
+  }
+
   canActivate(): boolean {
-    // local
     if (localStorage.getItem('currentUser')) {
       const local: any = 
         JSON.parse(localStorage.getItem('currentUser')!).token
 
-      this.http.getUserById(local).subscribe((response) => {
+      this.observable=this.http.getUserById(local).subscribe((response) => {
         if (response.success) {
           return true;
         } else {
