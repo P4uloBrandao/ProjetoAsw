@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { HttpService } from '../shared/httpService/http.service';
+import { HttpService } from 'src/app/shared/httpService/http.service';
 
 @Component({
   selector: 'app-register',
@@ -59,7 +58,6 @@ export class RegisterComponent implements OnInit {
       this.http
         .register(this.registrationForm.value)
         .subscribe((res) => {
-          console.log(res);
           this.router.navigate(['/login'])
         }, err => {
           console.log(err);

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import jwtDecode from 'jwt-decode';
 
 
 @Injectable({
@@ -19,9 +20,9 @@ export class HttpService{
     return this.http.post(this.url+"/register", data)
   }
 
-  public getUserById(userId: string): Observable<any> {
-    const newUrl = this.url + `/users/${userId}`;
-    console.log(newUrl);
+  public getUserById(token: string): Observable<any> {
+    const userId : any = jwtDecode(token);
+    const newUrl = this.url + `/users/${userId.id}`;
     
     return this.http.get<any>(newUrl);
   }

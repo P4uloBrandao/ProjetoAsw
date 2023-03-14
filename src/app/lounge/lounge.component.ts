@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MenusSidebar } from '../shared/configs/menus.configs';
 
 @Component({
   selector: 'app-lounge',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./lounge.component.scss']
 })
 export class LoungeComponent {
-
+  public menusLounge = MenusSidebar.lounge;
 }

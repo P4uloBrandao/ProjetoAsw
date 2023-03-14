@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HttpService } from '../shared/httpService/http.service';
+import { HttpService } from 'src/app/shared/httpService/http.service';
 
 @Component({
   selector: 'app-login',
@@ -36,20 +36,17 @@ export class LoginComponent implements OnInit {
         .subscribe((response) => {
           if (response.token) {
             console.log('Login bem-sucedido');
-            // armazenar as credenciais de login do usuário e o token jwt no localStorage para manter o usuário logado entre as sessões
             localStorage.setItem(
               'currentUser',
               JSON.stringify({ email: email, token: response.token })
             );
-            // redirecionar para a página inicial ou outra página autorizada
+            this.router.navigate(['/lounge/user']);
           } else {
             console.log('Falha no login');
-            // exibir mensagem de erro
           }
         });
     } else {
       console.log('Dados de login inválidos');
-      // exibir mensagem de erro
     }
   }
 }

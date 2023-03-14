@@ -1,13 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { AuthGuardService } from './shared/guards/auth-guard.service';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  {path: 'home', component: HomeComponent}
+  {
+    path: 'initial',
+    loadChildren: () =>
+      import('./initial/initial.module').then((m) => m.InitialModule),
+  },
+  {
+    path: 'lounge',
+    loadChildren: () =>
+      import('./lounge/lounge.module').then((m) => m.LoungeModule),
+    canActivate: [AuthGuardService],
+  },
+  { path: '', redirectTo: 'initial', pathMatch: 'full' },
+  { path: '**', redirectTo: 'initial' },
 ];
 
 @NgModule({

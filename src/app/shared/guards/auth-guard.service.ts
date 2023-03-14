@@ -1,33 +1,34 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { HttpService } from '../httpService/http.service';
 import jwtDecode from 'jwt-decode';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class AuthGuardService implements CanActivate{
-  
-  constructor(private http: HttpService) { }
+export class AuthGuardService implements CanActivate {
+  constructor(private http: HttpService, private router: Router) {}
 
-  canActivate() : boolean {
+  canActivate(): boolean {
     // local
     if (localStorage.getItem('currentUser')) {
-      const local: any = jwtDecode(
+      const local: any = 
         JSON.parse(localStorage.getItem('currentUser')!).token
-      );
-      this.http.getUserById(local.id).subscribe((response) => {
-        if (response.success== 'true') {
+
+      this.http.getUserById(local).subscribe((response) => {
+        if (response.success) {
           return true;
         } else {
+          this.router.navigate(['home']);
+
           return false;
         }
       });
-      return false
-  } else {
-    return false;
+      return true;
+    } else {
+      this.router.navigate(['home']);
+
+      return false;
+    }
   }
 }
-
-}
-
