@@ -16,6 +16,11 @@
             >{{ menu.label }}
           </p>
         </div>
+        <div class="row logout" *ngIf="AUTHENTICATED">
+          <p (click)="logout()">
+            <mat-icon>logout</mat-icon>Logout
+          </p>
+        </div>
       </div>
     </div>
   </mat-drawer>

@@ -20,7 +20,7 @@ export const MenusSidebar = {
     {
       label: 'User',
       icon: 'person',
-      route: 'initial/user',
+      route: './user',
     },
   ],
 };

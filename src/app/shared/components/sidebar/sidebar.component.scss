@@ -32,9 +32,23 @@
                 }
             }
         }
+        .logout {
+          cursor: pointer;
+          p{
+              border-radius: 5px;
+              mat-icon {
+                  vertical-align: middle;
+                  margin-right: 0.25rem;
+
+              }
+
+              &:hover{
+                  background-color: #5b777a;
+              }
+          }
+      }
       }
     }
     .site {
-        margin-top: 2rem;
     }
   }

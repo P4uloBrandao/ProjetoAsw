@@ -20,7 +20,7 @@ export class AuthGuardService implements CanActivate {
           return true;
         } else {
           this.router.navigate(['home']);
-
+          localStorage.removeItem('currentUser');
           return false;
         }
       });
