@@ -37,9 +37,7 @@ export class UserComponent implements OnInit{
                 Validators.min(100000000),
                 Validators.max(999999999),
               ],
-            ],
-            password: ['', [Validators.required, Validators.minLength(8)]],
-            confirmPassword: ['', Validators.required],
+            ]
           }
         );
         

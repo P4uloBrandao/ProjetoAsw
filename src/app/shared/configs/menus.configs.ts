@@ -7,12 +7,12 @@ export const MenusSidebar = {
     },
     {
       label: 'Home',
-      icon: 'input',
+      icon: 'home',
       route: './home',
     },
     {
       label: 'Register',
-      icon: 'input',
+      icon: 'person_add',
       route: './register',
     },
   ],
