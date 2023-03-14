@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { LoungeComponent } from './lounge.component';
 import { UserComponent } from './user/user.component';
+import { AdminComponent } from './admin/admin.component';
 
 const LOUNGE_ROUTES: Routes = [
   {
@@ -15,6 +16,10 @@ const LOUNGE_ROUTES: Routes = [
       {
         path: 'user',
         component: UserComponent,
+      },
+      {
+        path: 'admin',
+        component: AdminComponent,
       },
       {
         path: '',
@@ -42,7 +47,7 @@ const LOUNGE_ROUTES: Routes = [
 ];
 
 @NgModule({
-  declarations: [LoungeComponent, UserComponent],
+  declarations: [LoungeComponent, UserComponent, AdminComponent],
   imports: [
     RouterModule.forChild(LOUNGE_ROUTES),
     SharedModule,

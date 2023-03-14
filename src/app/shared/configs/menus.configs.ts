@@ -22,5 +22,10 @@ export const MenusSidebar = {
       icon: 'person',
       route: './user',
     },
+    {
+      label: 'Admin',
+      icon: 'supervisor_account',
+      route: './admin',
+    },
   ],
 };
