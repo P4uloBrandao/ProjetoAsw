@@ -9,7 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSidenavModule} from '@angular/material/sidenav';
-
+import {CloudinaryModule} from '@cloudinary/ng';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +22,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     ReactiveFormsModule,
     MatSelectModule,
     HttpClientModule,
-    MatSidenavModule
+    MatSidenavModule,
+    CloudinaryModule,
+ 
   ],
   providers: [],
   bootstrap: [AppComponent],

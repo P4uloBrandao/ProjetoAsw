@@ -26,4 +26,14 @@ export class HttpService{
     
     return this.http.get<any>(newUrl);
   }
+
+  public getAllUsers(): Observable<any> {
+    const newUrl = this.url + `/users`;
+    return this.http.get<any>(newUrl);
+  }
+  
+  public deleteUserById(userID: string ):  Observable<any>{
+    const newUrl = this.url + `/users/${userID}`;
+    return this.http.delete<any>(newUrl);
+  }
 }

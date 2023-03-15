@@ -7,6 +7,8 @@ import { SharedModule } from '../shared/shared.module';
 import { LoungeComponent } from './lounge.component';
 import { UserComponent } from './user/user.component';
 import { AdminComponent } from './admin/admin.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
 
 const LOUNGE_ROUTES: Routes = [
   {
@@ -53,7 +55,9 @@ const LOUNGE_ROUTES: Routes = [
     SharedModule,
     ReactiveFormsModule,
     MatSelectModule,
-    CommonModule
+    CommonModule,
+    MatTableModule,
+    MatIconModule,
   ],
 })
 export class LoungeModule {}
