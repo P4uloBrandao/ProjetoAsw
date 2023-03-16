@@ -6,7 +6,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { LoungeComponent } from './lounge.component';
 import { UserComponent } from './user/user.component';
-import { AdminComponent } from './admin/admin.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -21,7 +20,8 @@ const LOUNGE_ROUTES: Routes = [
       },
       {
         path: 'admin',
-        component: AdminComponent,
+        loadChildren: () =>
+            import('./admin/admin.module').then((m) => m.AdminModule),
       },
       {
         path: '',
@@ -30,8 +30,8 @@ const LOUNGE_ROUTES: Routes = [
       },
       // //   {
       // //     path: 'deals',
-      // //     loadChildren: () =>
-      // //       import('./deals/deals.module').then((m) => m.DealsModule),
+          // loadChildren: () =>
+          //   import('./deals/deals.module').then((m) => m.DealsModule),
       // //     canActivate: [AuthenticatedRouteGuard, LoungeRouteGuard],
       // //   },
       //   {
@@ -49,7 +49,7 @@ const LOUNGE_ROUTES: Routes = [
 ];
 
 @NgModule({
-  declarations: [LoungeComponent, UserComponent, AdminComponent],
+  declarations: [LoungeComponent, UserComponent],
   imports: [
     RouterModule.forChild(LOUNGE_ROUTES),
     SharedModule,

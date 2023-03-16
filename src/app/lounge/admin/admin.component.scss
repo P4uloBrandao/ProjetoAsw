@@ -1,15 +1,12 @@
-.table-container {
+.menus {
+  width: 100%;
   display: flex;
-  margin-top:10%;
-  margin-left:15%;
-  width:70%;
-}
-
-.table-container tr{
-  background-color:gray
-}
-
-
-.filter-container {
-  margin-bottom: 10px;
+  flex-direction: row;
+  justify-content: space-around;
+  p {
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 0 1rem;
+  }
 }
