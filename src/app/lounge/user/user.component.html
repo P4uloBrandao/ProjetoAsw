@@ -15,7 +15,7 @@
         <div class="d-flex justify-content-between align-items-center mb-3">
           <h4 class="text-right">Profile Settings</h4>
         </div>
-        <form [formGroup]="userForm">
+        <form [formGroup]="userForm" (ngSubmit)="updateUser()">
           <div class="row mt-2">
             <div class="col-md-12">
               <label class="labels">Name</label
@@ -75,7 +75,7 @@
             </div>
           </div>
           <div class="mt-5 text-center">
-            <button class="btn btn-primary profile-button" type="submit">
+            <button class="btn btn-primary profile-button" type="submit" [disabled]="!userForm.valid">
               Save Profile
             </button>
           </div>
@@ -90,13 +90,13 @@
           <span>Preferências</span>
         </div>
         <br />
-        <form [formGroup]="preferenceForm">
+        <form [formGroup]="userForm">
           <div class="col-md-12 select">
             <label class="labels">Categorias</label
             ><mat-form-field appearance="fill">
               <mat-label>Selecione suas categorias</mat-label>
-              <mat-select multiple color="primary">
-                <mat-option [value]=""></mat-option>
+              <mat-select multiple color="primary" formControlName="categorias">
+                <mat-option [value]="'ola'">Ola</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
@@ -104,8 +104,8 @@
             <label class="labels">Marcas</label
             ><mat-form-field appearance="fill">
               <mat-label>Selecione suas marcas</mat-label>
-              <mat-select multiple color="primary">
-                <mat-option [value]=""></mat-option>
+              <mat-select multiple color="primary" formControlName="marcas">
+                <mat-option [value]="'ola'">Ola</mat-option>
               </mat-select>
             </mat-form-field>
           </div>

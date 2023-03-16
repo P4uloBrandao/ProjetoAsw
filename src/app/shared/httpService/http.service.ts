@@ -36,4 +36,10 @@ export class HttpService{
     const newUrl = this.url + `/users/${userID}`;
     return this.http.delete<any>(newUrl);
   }
+
+  public updateUserInfo(data: any, token: string): Observable<any> {
+    const userId : any = jwtDecode(token);
+    const newUrl = this.url + `/users/${userId.id}`;
+    return this.http.put<any>(newUrl, data);
+  }
 }
