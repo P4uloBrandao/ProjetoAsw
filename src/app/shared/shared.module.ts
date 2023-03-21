@@ -5,6 +5,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [SidebarComponent],
@@ -14,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatSidenavModule,
     RouterModule,
     MatIconModule,
+    MatSnackBarModule
   ],
   exports: [SidebarComponent],
 })

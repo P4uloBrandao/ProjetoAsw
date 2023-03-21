@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import jwtDecode from 'jwt-decode';
 
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -42,4 +43,14 @@ export class HttpService{
     const newUrl = this.url + `/users/${userId.id}`;
     return this.http.put<any>(newUrl, data);
   }
+  public updateUser(data: any, id: string): Observable<any> {
+    const newUrl = this.url + `/users/${id}`;
+    return this.http.put<any>(newUrl, data);
+  }
+
+  public addUser(data: any): Observable<any> {
+    return this.http.post('/users/', data);
+  }
+
+
 }

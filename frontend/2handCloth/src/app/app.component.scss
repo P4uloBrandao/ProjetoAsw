@@ -1,0 +1,17 @@
+.site-container {
+  height: 100vh;
+  border: 1px solid #555;
+  width: auto;
+  color: black;
+
+  .sidebar {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    .logo {
+      cursor: pointer;
+      font-size: 1.3em;
+    }
+  }
+}
