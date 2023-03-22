@@ -11,7 +11,8 @@ import jwtDecode from 'jwt-decode';
 export class HttpService{
   constructor(private http: HttpClient) {}
 
-  private url = 'http://13.39.18.106:8080';
+  // private url = 'http://13.39.18.106:8080';
+  private url = 'http://localhost:8080';
 
   public login(data: any) : Observable<any>{
     return this.http.post(this.url+"/login", data)
@@ -52,5 +53,14 @@ export class HttpService{
     return this.http.post('/users/', data);
   }
 
+  public getCategories(): Observable<any> {
+    const newUrl = this.url + `/categorias`;
+    return this.http.get<any>(newUrl);
+  }
+
+  public getMarcas(): Observable<any> {
+    const newUrl = this.url + `/marcas`;
+    return this.http.get<any>(newUrl);
+  }
 
 }

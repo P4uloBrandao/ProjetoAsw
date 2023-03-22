@@ -16,7 +16,7 @@ export const MenusSidebar = {
       route: './register',
     },
   ],
-  lounge: [
+  loungeAdmin: [
     {
       label: 'User',
       icon: 'person',
@@ -28,4 +28,11 @@ export const MenusSidebar = {
       route: './admin',
     },
   ],
+  loungeUser: [
+    {
+      label: 'User',
+      icon: 'person',
+      route: './user',
+    }
+  ]
 };

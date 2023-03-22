@@ -14,9 +14,7 @@ export class LoginComponent implements OnInit {
   user: any;
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router,
     private http: HttpService,
-    private route: ActivatedRoute
   ) {}
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -44,12 +42,13 @@ export class LoginComponent implements OnInit {
             // redirecionar para a página inicial ou outra página autorizada
           } else {
             console.log('Falha no login');
-            // exibir mensagem de erro
           }
+        },
+        (error) => {
+          console.log('Falha no login');
         });
     } else {
       console.log('Dados de login inválidos');
-      // exibir mensagem de erro
     }
   }
 }
