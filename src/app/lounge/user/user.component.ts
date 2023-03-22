@@ -48,6 +48,7 @@ export class UserComponent implements OnInit, OnDestroy {
             ],
             categorias: ['', []],
             marcas: ['', []],
+            tamanho: ['', []],
           });
         })
       );
@@ -75,11 +76,13 @@ export class UserComponent implements OnInit, OnDestroy {
     const formData = this.userForm.value;
 
     if (this.userForm.valid) {
-      this.http
-        .updateUserInfo(formData, this.local.token)
-        .subscribe((response) => {
-          console.log(response);
-        });
+      // this.http
+      //   .updateUserInfo(formData, this.local.token)
+      //   .subscribe((response) => {
+      //     console.log(response);
+      //   });
+      console.log(formData);
+      
     }
   }
 }
