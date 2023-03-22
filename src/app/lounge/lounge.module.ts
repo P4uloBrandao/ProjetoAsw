@@ -8,6 +8,7 @@ import { LoungeComponent } from './lounge.component';
 import { UserComponent } from './user/user.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
+import { AdminGuard } from '../shared/guards/admin.guard';
 
 const LOUNGE_ROUTES: Routes = [
   {
@@ -22,6 +23,7 @@ const LOUNGE_ROUTES: Routes = [
         path: 'admin',
         loadChildren: () =>
             import('./admin/admin.module').then((m) => m.AdminModule),
+            canActivate: [AdminGuard],
       },
       {
         path: '',
