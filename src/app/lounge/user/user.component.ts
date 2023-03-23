@@ -47,7 +47,7 @@ export class UserComponent implements OnInit, OnDestroy {
               ],
             ],
             categorias: ['', []],
-            marcas: ['', []],
+            marca: ['', []],
             tamanho: ['', []],
           });
         })

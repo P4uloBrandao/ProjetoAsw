@@ -104,7 +104,7 @@
             <label class="labels">Marcas</label
             ><mat-form-field appearance="fill">
               <mat-label>Selecione suas marcas</mat-label>
-              <mat-select multiple color="primary" formControlName="marcas">
+              <mat-select multiple color="primary" formControlName="marca">
                 <mat-option *ngFor="let marca of marcas" [value]="marca._id">{{marca.name}}</mat-option>
 
               </mat-select>
