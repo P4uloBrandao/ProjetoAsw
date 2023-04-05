@@ -1,9 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from 'src/app/shared/httpService/http.service';
-import { CommonModule } from '@angular/common';
-import { MatTable } from '@angular/material/table';
-import { ViewChild } from '@angular/core';
-import {FormGroup,FormControl} from '@angular/forms';
 
 
 

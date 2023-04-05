@@ -8,7 +8,7 @@ import { HttpService } from 'src/app/shared/httpService/http.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent implements OnInit, OnDestroy{
+export class RegisterComponent implements OnInit, OnDestroy {
   public registrationForm!: FormGroup;
   private observable: any;
   constructor(
@@ -19,23 +19,78 @@ export class RegisterComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
     this.registrationForm = this.formBuilder.group(
       {
-        nome: ['', [Validators.required]],
-        email: ['', [Validators.required, Validators.email]],
-        dataNascimento: ['', [Validators.required]],
-        genero: ['', [Validators.required]],
-        morada: ['', [Validators.required]],
-        localidade: ['', [Validators.required]],
-        codigoPostal: ['', [Validators.required]],
+        nome: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern(/^(?:(?!<script)[\s\S])*$/i),
+          ],
+        ],
+        email: [
+          '',
+          [
+            Validators.required,
+            Validators.email,
+            Validators.pattern(/^(?:(?!<script)[\s\S])*$/i),
+          ],
+        ],
+        dataNascimento: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern(/^(?:(?!<script)[\s\S])*$/i),
+          ],
+        ],
+        genero: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern(/^(?:(?!<script)[\s\S])*$/i),
+          ],
+        ],
+        morada: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern(/^(?:(?!<script)[\s\S])*$/i),
+          ],
+        ],
+        localidade: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern(/^(?:(?!<script)[\s\S])*$/i),
+          ],
+        ],
+        codigoPostal: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern(/^(?:(?!<script)[\s\S])*$/i),
+          ],
+        ],
         telefone: [
           '',
           [
             Validators.required,
             Validators.min(100000000),
             Validators.max(999999999),
+            Validators.pattern(/^(?:(?!<script)[\s\S])*$/i),
           ],
         ],
-        password: ['', [Validators.required, Validators.minLength(8)]],
-        confirmPassword: ['', Validators.required],
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(8),
+            Validators.pattern(/^(?:(?!<script)[\s\S])*$/i),
+          ],
+        ],
+        confirmPassword: [
+          '',
+          Validators.required,
+          Validators.pattern(/^(?:(?!<script)[\s\S])*$/i),
+        ],
       },
       { validator: this.passwordMatchValidator }
     );
@@ -61,15 +116,17 @@ export class RegisterComponent implements OnInit, OnDestroy{
       const emailControl = this.registrationForm.get('email');
       const emailValue = emailControl!.value.toLowerCase();
       emailControl!.patchValue(emailValue);
-      
-      this.observable=this.http
-        .register(this.registrationForm.value)
-        .subscribe((res) => {
-          this.router.navigate(['/login'])
-        }, err => {
-          console.log(err);
-        });
 
+      this.observable = this.http
+        .register(this.registrationForm.value)
+        .subscribe(
+          (res) => {
+            this.router.navigate(['/login']);
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
     }
   }
 }

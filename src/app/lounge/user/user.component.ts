@@ -25,30 +25,68 @@ export class UserComponent implements OnInit, OnDestroy {
         this.http.getUserById(this.local.token).subscribe((response) => {
           this.userInfo = response.data;
           this.userForm = this.formBuilder.group({
-            nome: [this.userInfo.nome, [Validators.required]],
+            nome: [
+              this.userInfo.nome,
+              [
+                Validators.required,
+                Validators.pattern(/^(?:(?!<script)[\s\S])*$/i),
+              ],
+            ],
             email: [
               this.userInfo.email,
-              [Validators.required, Validators.email],
+              [
+                Validators.required,
+                Validators.email,
+                Validators.pattern(/^(?:(?!<script)[\s\S])*$/i),
+              ],
             ],
             dataNascimento: [
               this.userInfo.dataNascimento,
-              [Validators.required],
+              [
+                Validators.required,
+                Validators.pattern(/^(?:(?!<script)[\s\S])*$/i),
+              ],
             ],
-            genero: [this.userInfo.genero, [Validators.required]],
-            morada: [this.userInfo.morada, [Validators.required]],
-            localidade: [this.userInfo.localidade, [Validators.required]],
-            codigoPostal: [this.userInfo.codigoPostal, [Validators.required]],
+            genero: [
+              this.userInfo.genero,
+              [
+                Validators.required,
+                Validators.pattern(/^(?:(?!<script)[\s\S])*$/i),
+              ],
+            ],
+            morada: [
+              this.userInfo.morada,
+              [
+                Validators.required,
+                Validators.pattern(/^(?:(?!<script)[\s\S])*$/i),
+              ],
+            ],
+            localidade: [
+              this.userInfo.localidade,
+              [
+                Validators.required,
+                Validators.pattern(/^(?:(?!<script)[\s\S])*$/i),
+              ],
+            ],
+            codigoPostal: [
+              this.userInfo.codigoPostal,
+              [
+                Validators.required,
+                Validators.pattern(/^(?:(?!<script)[\s\S])*$/i),
+              ],
+            ],
             telefone: [
               this.userInfo.telefone,
               [
                 Validators.required,
                 Validators.min(100000000),
                 Validators.max(999999999),
+                Validators.pattern(/^(?:(?!<script)[\s\S])*$/i),
               ],
             ],
-            categorias: ['', []],
-            marca: ['', []],
-            tamanho: ['', []],
+            categorias: ['', [Validators.pattern(/^(?:(?!<script)[\s\S])*$/i)]],
+            marca: ['', [Validators.pattern(/^(?:(?!<script)[\s\S])*$/i)]],
+            tamanho: ['', [Validators.pattern(/^(?:(?!<script)[\s\S])*$/i)]],
           });
         })
       );
@@ -81,7 +119,6 @@ export class UserComponent implements OnInit, OnDestroy {
         .subscribe((response) => {
           console.log(response);
         });
-      
     }
   }
 }
