@@ -9,6 +9,9 @@ import { UserComponent } from './user/user.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { AdminGuard } from '../shared/guards/admin.guard';
+import { AddProductComponent } from './add-product/add-product.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+
 
 const LOUNGE_ROUTES: Routes = [
   {
@@ -18,6 +21,10 @@ const LOUNGE_ROUTES: Routes = [
       {
         path: 'user',
         component: UserComponent,
+      },
+      {
+        path: 'products',
+        component: AddProductComponent,
       },
       {
         path: 'admin',
@@ -51,7 +58,7 @@ const LOUNGE_ROUTES: Routes = [
 ];
 
 @NgModule({
-  declarations: [LoungeComponent, UserComponent],
+  declarations: [LoungeComponent, UserComponent, AddProductComponent],
   imports: [
     RouterModule.forChild(LOUNGE_ROUTES),
     SharedModule,
@@ -60,6 +67,7 @@ const LOUNGE_ROUTES: Routes = [
     CommonModule,
     MatTableModule,
     MatIconModule,
+    NgxDropzoneModule,
   ],
 })
 export class LoungeModule {}

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import jwtDecode from 'jwt-decode';
 
@@ -11,8 +11,8 @@ import jwtDecode from 'jwt-decode';
 export class HttpService{
   constructor(private http: HttpClient) {}
 
-  private url = 'http://13.39.18.106:8080';
-  // private url = 'http://localhost:8080';
+  //private url = 'http://13.39.18.106:8080';
+  private url = 'http://localhost:8080';
 
   public login(data: any) : Observable<any>{
     return this.http.post(this.url+"/login", data)
@@ -62,5 +62,15 @@ export class HttpService{
     const newUrl = this.url + `/marcas`;
     return this.http.get<any>(newUrl);
   }
+  
+  public uploadImages(vals:any):Observable<any>{
+    let data=vals;
+    return this.http.post('https://api.cloudinary.com/v1_1/dlbgyzjna/image/upload',data);
+  }
 
+  public addProduct(data: any, token: string): Observable<any> {
+    const userId : any = jwtDecode(token);
+    const newUrl = this.url + `/products/${userId.id}`;
+    return this.http.post<any>(newUrl+`/add`, data);
+  }
 }

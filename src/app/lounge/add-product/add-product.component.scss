@@ -1,0 +1,20 @@
+
+.container {
+    max-width: 1200px; /* Define a largura máxima do container */
+    margin-left: auto; /* Centraliza o container horizontalmente */
+    margin-right: 50%; /* Centraliza o container horizontalmente */
+    padding-left: 50%; /* Adiciona um espaçamento à esquerda do container */
+    padding-right: 15px; /* Adiciona um espaçamento à direita do container */
+  
+  }
+  
+  .row {
+    margin-left: -15px; /* Remove a margem padrão da row para ficar alinhado com o container */
+    margin-right: -15px; /* Remove a margem padrão da row para ficar alinhado com o container */
+  }
+  
+  .col-12 {
+    padding-left: 15px; /* Adiciona um espaçamento interno à esquerda das colunas */
+    padding-right: 15px; /* Adiciona um espaçamento interno à direita das colunas */
+  }
+  
