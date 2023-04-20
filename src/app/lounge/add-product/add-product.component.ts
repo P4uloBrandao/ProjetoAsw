@@ -24,14 +24,14 @@ export class AddProductComponent {
   ngOnInit() {
     this.local = JSON.parse(this.local);
     this.ProductForm = this.fb.group({
-      title: ['', Validators.required, Validators.pattern(/^(?:(?!<script)[\s\S])*$/i)],
-      type: ['', Validators.required, Validators.pattern(/^(?:(?!<script)[\s\S])*$/i)],
-      description: ['', Validators.required, Validators.pattern(/^(?:(?!<script)[\s\S])*$/i)],
-      price: ['', [Validators.required, Validators.pattern(/^(?:(?!<script)[\s\S])*$/i), Validators.min(0), Validators.max(1000)]],
-      size: ['', Validators.required, Validators.pattern(/^(?:(?!<script)[\s\S])*$/i)],
-      condition: ['', Validators.required, Validators.pattern(/^(?:(?!<script)[\s\S])*$/i)],
-      categories: ['', Validators.required, Validators.pattern(/^(?:(?!<script)[\s\S])*$/i)],
-      brand: ['', Validators.required, Validators.pattern(/^(?:(?!<script)[\s\S])*$/i)],
+      title: ['', Validators.required],
+      type: ['', Validators.required],
+      description: ['', Validators.required],
+      price: ['', [Validators.required, Validators.min(0), Validators.max(1000)]],
+      size: ['', Validators.required],
+      condition: ['', Validators.required],
+      categories: ['', Validators.required],
+      brand: ['', Validators.required],
       images:[this.imagesUrl]// Adicionar o campo de upload de imagens
     });
 
