@@ -27,12 +27,22 @@ export const MenusSidebar = {
       icon: 'supervisor_account',
       route: './admin',
     },
+    {
+      label: 'Add Products',
+      icon: 'add',
+      route: './add-products',
+    }
   ],
   loungeUser: [
     {
       label: 'User',
       icon: 'person',
       route: './user',
+    },
+    {
+      label: 'Add Products',
+      icon: 'add',
+      route: './add-products',
     }
   ]
 };

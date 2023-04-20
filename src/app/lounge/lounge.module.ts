@@ -23,7 +23,7 @@ const LOUNGE_ROUTES: Routes = [
         component: UserComponent,
       },
       {
-        path: 'products',
+        path: 'add-products',
         component: AddProductComponent,
       },
       {
