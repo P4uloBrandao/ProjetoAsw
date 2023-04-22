@@ -73,4 +73,23 @@ export class HttpService{
     const newUrl = this.url + `/products/${userId.id}`;
     return this.http.post<any>(newUrl+`/add`, data);
   }
+
+  public getProducts(): Observable<any> {
+    const newUrl = this.url + `/products`;
+    return this.http.get<any>(newUrl);
+  }
+
+  public addFavProduct(prodId: any, token: string): Observable<any> {
+    const userId : any = jwtDecode(token);
+    const newUrl = this.url + `/users/${userId.id}/favorites/${prodId}`;
+    return this.http.post<any>(newUrl, null);
+
+  }
+
+  public removeFavProduct(prodId: any, token: string): Observable<any> {
+    const userId : any = jwtDecode(token);
+    const newUrl = this.url + `/users/${userId.id}/favorites/${prodId}`;
+    return this.http.delete<any>(newUrl);
+
+  }
 }

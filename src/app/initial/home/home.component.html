@@ -1,1 +1,8 @@
-<p>home works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col cardContainer">
+            <div class="card" *ngFor="let prod of products"> <app-product-card [product]="prod"></app-product-card></div>
+
+        </div>
+    </div>
+</div>

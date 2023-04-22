@@ -43,6 +43,11 @@ export const MenusSidebar = {
       label: 'Add Products',
       icon: 'add',
       route: './add-products',
+    },
+    {
+      label: 'Products',
+      icon: 'list',
+      route: './products',
     }
   ]
 };

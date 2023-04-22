@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { AdminGuard } from '../shared/guards/admin.guard';
 import { AddProductComponent } from './add-product/add-product.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { ProductsComponent } from './products/products.component';
 
 
 const LOUNGE_ROUTES: Routes = [
@@ -25,6 +26,10 @@ const LOUNGE_ROUTES: Routes = [
       {
         path: 'add-products',
         component: AddProductComponent,
+      },
+      {
+        path: 'products',
+        component: ProductsComponent,
       },
       {
         path: 'admin',
@@ -58,7 +63,7 @@ const LOUNGE_ROUTES: Routes = [
 ];
 
 @NgModule({
-  declarations: [LoungeComponent, UserComponent, AddProductComponent],
+  declarations: [LoungeComponent, UserComponent, AddProductComponent, ProductsComponent],
   imports: [
     RouterModule.forChild(LOUNGE_ROUTES),
     SharedModule,

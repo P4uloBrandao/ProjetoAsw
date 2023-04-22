@@ -6,18 +6,22 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import {MatCardModule} from '@angular/material/card';
+
 
 
 @NgModule({
-  declarations: [SidebarComponent],
+  declarations: [SidebarComponent, ProductCardComponent, ProductCardComponent],
   imports: [
     CommonModule,
     MatSelectModule,
     MatSidenavModule,
     RouterModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCardModule
   ],
-  exports: [SidebarComponent],
+  exports: [SidebarComponent, ProductCardComponent],
 })
 export class SharedModule {}

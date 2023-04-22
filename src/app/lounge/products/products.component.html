@@ -1,0 +1,8 @@
+<div class="container">
+    <div class="row">
+        <div class="col cardContainer" *ngIf="favoriteProducts">
+            <div class="card" *ngFor="let prod of products"> <app-product-card [product]="prod" [isFavorite]="favoriteProducts.includes(prod._id)"></app-product-card></div>
+
+        </div>
+    </div>
+</div>
