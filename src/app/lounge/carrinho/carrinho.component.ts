@@ -1,24 +1,60 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { HttpService } from 'src/app/shared/httpService/http.service';
 
 @Component({
   selector: 'app-carrinho',
   templateUrl: './carrinho.component.html',
-  styleUrls: ['./carrinho.component.scss']
+  styleUrls: ['./carrinho.component.scss'],
 })
-export class CarrinhoComponent {
+export class CarrinhoComponent implements OnDestroy {
   private userToken: any;
-  public carrinho: any;
-  constructor(private httpService: HttpService) { 
+  private subscriptions: any = [];
+  public products: any;
+  public totalPrice: number=0;
+  public comprado: boolean=false;
+  constructor(private httpService: HttpService) {
     if (localStorage.getItem('currentUser')) {
       const ls = JSON.parse(localStorage.getItem('currentUser')!);
       this.userToken = ls.token;
     }
     httpService.getProductsFromCart(this.userToken).subscribe((res: any) => {
-      this.carrinho = res.data;
-      console.log(this.carrinho);
-      
+      if (res.success) {
+        let lista: any=[]
+        res.carrinho.forEach((element: any) => {
+          
+          httpService.getProductById(element._id).subscribe((res: any) => {
+            if (res.success) {
+              lista.push(res.data)
+              this.totalPrice+=Number(res.data.price)
+              
+              
+            }
+          });
+        });
+        this.products=lista
+        
+      }
     });
+  }
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription: any) => {
+      subscription.unsubscribe();
+    });
+  }
 
+  public buyNow(): void {
+    if (this.userToken) {
+      this.subscriptions.push(
+        this.httpService
+          .buyProductsFromCart(this.userToken)
+          .subscribe((res: any) => {
+            if (res.success) {
+              console.log(res.data);
+              this.comprado=true;
+
+            }
+          })
+      );
+    }
   }
 }
