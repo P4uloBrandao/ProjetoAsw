@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div class="card-top container-fluid">
-    <div class="container d-flex"style="margin-bottom:20px;margin-top:30px">
+    <div class="container d-flex"style="margin-bottom:20px;margin-top:100px" >
         <div class="item">
             <a (click)="filter('')">
                 <span>Todos</span>
@@ -39,9 +39,20 @@
     </div>
 </div>
 <div class="container">
-    <div class="row">
-        <div class="col cardContainer" *ngIf="favoriteProducts">
-            <div class="card" *ngFor="let prod of filterCategory  | filter:searchKey:'title'"> <app-product-card [product]="prod" [isFavorite]="favoriteProducts.includes(prod._id)"></app-product-card></div>
+    <div class="product-list">
+        <div class="section-header">Preferências:</div>
+        <div class="card-list">
+            <div class="col cardContainer" *ngIf="favoriteProducts">
+                <div class="card" *ngFor="let prod of filterCategory  | filter:searchKey:'title'"> <app-product-card [product]="prod" [isFavorite]="favoriteProducts.includes(prod._id)"></app-product-card></div>
+            </div>
         </div>
-    </div>
+      
+        <div class="section-header">Todos:</div>
+        <div class="card-list">
+            <div class="col cardContainer" *ngIf="favoriteProducts">
+                <div class="card" *ngFor="let prod of filterCategory  | filter:searchKey:'title'"> <app-product-card [product]="prod" [isFavorite]="favoriteProducts.includes(prod._id)"></app-product-card></div>
+            </div>
+        </div>
+      </div>
+
 </div>

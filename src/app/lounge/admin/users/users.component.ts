@@ -7,6 +7,7 @@ import {CoreService} from 'src/app/shared/core/core.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UserAddEditComponent } from '../user-add-edit/user-add-edit.component';
 import { core } from '@angular/compiler';
+import { ProductsTableComponent } from '../products-table/products-table.component';
 
 
 /**
@@ -27,6 +28,7 @@ export class UsersComponent  implements OnInit{
     'genero',
     'morada',
     'action',
+    'Produtos'
   ];
   dataSource!: MatTableDataSource<any>;
 
@@ -61,15 +63,6 @@ export class UsersComponent  implements OnInit{
     }
   }
 
-  deleteEmployee(id: string) {
-    this.userService.deleteUserById(id).subscribe({
-      next: (res) => {
-        this.coreService.openSnackBar('Employee deleted!', 'done');
-        this.getUsersList();
-      },
-      error: console.log,
-    });
-  }
   
   getUsersList() {
     this.userService. getAllUsers().subscribe({
@@ -84,6 +77,20 @@ export class UsersComponent  implements OnInit{
 
   openAddEditForm() {
     const dialogRef = this._dialog.open(UserAddEditComponent);
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if (val) {
+          this.getUsersList();
+        }
+      },
+    });
+  }
+
+
+  openProductsForm(data: any) {
+    const dialogRef = this._dialog.open(ProductsTableComponent,{
+      data,
+    });
     dialogRef.afterClosed().subscribe({
       next: (val) => {
         if (val) {

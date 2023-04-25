@@ -113,4 +113,10 @@ export class HttpService{
     const newUrl = this.url + `/users/${userId.id}/cart`;
     return this.http.get<any>(newUrl);
   }
+
+  public getUserProducts(userId:any): Observable<any> {
+    const newUrl = this.url + `/products/user/${userId}`;
+    return this.http.get<any>(newUrl);
+  }
+
 }

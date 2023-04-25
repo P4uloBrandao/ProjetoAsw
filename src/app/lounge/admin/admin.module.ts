@@ -20,6 +20,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ProductsTableComponent } from './products-table/products-table.component';
 
  
 
@@ -47,7 +48,7 @@ const ADMIN_ROUTES: Routes = [
 ];
 
 @NgModule({
-  declarations: [AdminComponent, UsersComponent, UserAddEditComponent],
+  declarations: [AdminComponent, UsersComponent, UserAddEditComponent, ProductsTableComponent],
   imports: [
     RouterModule.forChild(ADMIN_ROUTES),
     CommonModule,
