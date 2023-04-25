@@ -44,17 +44,21 @@ export class CarrinhoComponent implements OnDestroy {
 
   public buyNow(): void {
     if (this.userToken) {
-      this.subscriptions.push(
-        this.httpService
-          .buyProductsFromCart(this.userToken)
-          .subscribe((res: any) => {
-            if (res.success) {
-              console.log(res.data);
-              this.comprado=true;
+      this.products.forEach((element: any) => {
+        this.subscriptions.push(
+          this.httpService
+            .buyProductsFromCart(element._id,this.userToken, element.price)
+            .subscribe((res: any) => {
+              if (res.success) {
+                console.log(res.data);
+                this.comprado=true;
+  
+              }
+            })
+        );
+      });
 
-            }
-          })
-      );
+
     }
   }
 }

@@ -119,10 +119,15 @@ export class HttpService{
     return this.http.get<any>(newUrl);
   }
 
-  public buyProductsFromCart(token: string): Observable<any> {
+  public buyProductsFromCart(prodId: string, token: string, price: string): Observable<any> {
     const userId : any = jwtDecode(token);
+    const body = {
+      productId: prodId,
+      buyerId: userId.id,
+      soldPrice: price
+    }
     const newUrl = this.url + `/users/${userId.id}/buy`;
-    return this.http.post<any>(newUrl, null);
+    return this.http.post<any>(newUrl, body);
   }
 
   public getProductById(prodId: any): Observable<any> {
