@@ -13,6 +13,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { ProductsComponent } from './products/products.component';
 import { FormsModule } from '@angular/forms';
+import { CarrinhoComponent } from './carrinho/carrinho.component';
 
 
 
@@ -32,6 +33,10 @@ const LOUNGE_ROUTES: Routes = [
       {
         path: 'products',
         component: ProductsComponent,
+      },
+      {
+        path: 'cart',
+        component: CarrinhoComponent,
       },
       {
         path: 'admin',
@@ -65,7 +70,7 @@ const LOUNGE_ROUTES: Routes = [
 ];
 
 @NgModule({
-  declarations: [LoungeComponent, UserComponent, AddProductComponent, ProductsComponent],
+  declarations: [LoungeComponent, UserComponent, AddProductComponent, ProductsComponent, CarrinhoComponent],
   imports: [
     RouterModule.forChild(LOUNGE_ROUTES),
     SharedModule,

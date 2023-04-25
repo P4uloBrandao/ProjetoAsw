@@ -100,4 +100,17 @@ export class HttpService{
     return this.http.delete<any>(newUrl);
 
   }
+
+  public addToCart(prodId: any, token: string): Observable<any> {
+    const userId : any = jwtDecode(token);
+    const newUrl = this.url + `/users/${userId.id}/cart/${prodId}`;
+    return this.http.post<any>(newUrl, null);
+
+  }
+
+  public getProductsFromCart(token: string): Observable<any> {
+    const userId : any = jwtDecode(token);
+    const newUrl = this.url + `/users/${userId.id}/cart`;
+    return this.http.get<any>(newUrl);
+  }
 }

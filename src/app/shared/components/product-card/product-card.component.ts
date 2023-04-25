@@ -59,4 +59,18 @@ export class ProductCardComponent implements OnInit, OnDestroy {
       );
     }
   }
+
+  public addToCart(): void {
+    if (this.userToken) {
+      this.subscriptions.push(
+        this.httpService
+          .addToCart(this.product._id, this.userToken)
+          .subscribe((res: any) => {
+            if (res.success) {
+              console.log(res.data);
+            }
+          })
+      );
+    }
+  }
 }

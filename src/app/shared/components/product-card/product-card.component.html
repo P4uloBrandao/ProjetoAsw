@@ -16,5 +16,6 @@
     <mat-card-actions>
         <button mat-button class="button" *ngIf="!isFavorite" (click)="addFavorite()"> <mat-icon>favorite_border</mat-icon></button>
         <button mat-button class="button" *ngIf="isFavorite" (click)="removeFavorite()"> <mat-icon>favorite</mat-icon></button>
+        <button mat-button class="button carrinho" (click)="addToCart()"> Adicionar ao carrinho</button>
     </mat-card-actions>
 </mat-card>

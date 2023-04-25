@@ -57,7 +57,7 @@ export const MenusSidebar = {
     {
       label: 'Carrinho',
       icon: 'shopping_cart',
-      route: './products',
+      route: './cart',
     },
    
     {
