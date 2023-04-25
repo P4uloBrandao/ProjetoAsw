@@ -12,6 +12,8 @@ import { AdminGuard } from '../shared/guards/admin.guard';
 import { AddProductComponent } from './add-product/add-product.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { ProductsComponent } from './products/products.component';
+import { FormsModule } from '@angular/forms';
+
 
 
 const LOUNGE_ROUTES: Routes = [
@@ -73,6 +75,7 @@ const LOUNGE_ROUTES: Routes = [
     MatTableModule,
     MatIconModule,
     NgxDropzoneModule,
+    FormsModule,
   ],
 })
 export class LoungeModule {}

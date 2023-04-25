@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit, OnDestroy {
               'currentUser',
               JSON.stringify({ email: email, token: response.token })
             );
-            this.router.navigate(['/lounge/user']);
+            this.router.navigate(['lounge/products']);
           } else {
             console.log('Falha no login');
           }

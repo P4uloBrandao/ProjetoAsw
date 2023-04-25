@@ -35,18 +35,34 @@ export const MenusSidebar = {
   ],
   loungeUser: [
     {
-      label: 'User',
+      label: 'Home',
+      icon: 'home',
+      route: './products',
+    },
+    {
+      label: 'Perfil',
       icon: 'person',
       route: './user',
     },
     {
-      label: 'Add Products',
-      icon: 'add',
+      label: 'Vender',
+      icon: 'store',
       route: './add-products',
     },
     {
-      label: 'Products',
-      icon: 'list',
+      label: 'Favoritos',
+      icon: 'favorite',
+      route: './products',
+    },
+    {
+      label: 'Carrinho',
+      icon: 'shopping_cart',
+      route: './products',
+    },
+   
+    {
+      label: 'Mensagens',
+      icon: 'message',
       route: './products',
     }
   ]

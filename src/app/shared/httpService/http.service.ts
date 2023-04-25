@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import jwtDecode from 'jwt-decode';
+import { BehaviorSubject } from 'rxjs';
 
 
 
@@ -9,7 +10,14 @@ import jwtDecode from 'jwt-decode';
   providedIn: 'root',
 })
 export class HttpService{
+  public search = new BehaviorSubject<string>("");
+  public productList = new BehaviorSubject<any>([]);
+
   constructor(private http: HttpClient) {}
+
+  getAllProducts(){
+    return this.productList.asObservable();
+  }
 
   private url = 'http://13.39.18.106:8080';
   //private url = 'http://localhost:8080';
@@ -65,7 +73,7 @@ export class HttpService{
   
   public uploadImages(vals:any):Observable<any>{
     let data=vals;
-    return this.http.post('https://api.cloudinary.com/v1_1/dlbgyzjna/image/upload',data);
+    return this.http.post('https://api.cloudinary.com/v1_1/dlbgyzjna/image/upload/',data);
   }
 
   public addProduct(data: any, token: string): Observable<any> {
