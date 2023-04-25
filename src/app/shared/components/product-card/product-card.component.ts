@@ -12,6 +12,8 @@ export class ProductCardComponent implements OnInit, OnDestroy {
   private subscriptions: any = [];
   @Input() product: any;
   @Input() isFavorite: any = false;
+  @Input() isCart: any = false;
+  
 
   constructor(private httpService: HttpService) {
     if (localStorage.getItem('currentUser')) {

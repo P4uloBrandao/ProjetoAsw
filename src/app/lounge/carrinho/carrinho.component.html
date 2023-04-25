@@ -1,1 +1,16 @@
-<p>carrinho works!</p>
+<div *ngIf="!comprado" class="container">
+    <div class="row">
+        <div class="col cardContainer" *ngIf="products">
+            <div class="card" *ngFor="let prod of products"> <app-product-card [product]="prod" [isCart]="true"></app-product-card></div>
+
+        </div>
+    </div>
+    <div class="row">
+        <p>Preço Total: {{totalPrice}}</p>
+    </div>
+    <div class="row"><button (click)="buyNow()">Comprar</button></div>
+</div>
+
+<div *ngIf="comprado" class="container">
+    <p>Compra efetuada com sucesso</p>
+</div>

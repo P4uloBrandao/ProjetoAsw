@@ -88,8 +88,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
         ],
         confirmPassword: [
           '',
-          Validators.required,
-          Validators.pattern(/^(?:(?!<script)[\s\S])*$/i),
+          [Validators.required,
+          Validators.pattern(/^(?:(?!<script)[\s\S])*$/i)]
         ],
       },
       { validator: this.passwordMatchValidator }
@@ -102,7 +102,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }
   }
 
-  passwordMatchValidator(formGroup: any) {
+  public passwordMatchValidator(formGroup: any) {
     const password = formGroup.get('password').value;
     const confirmPassword = formGroup.get('confirmPassword').value;
     return password === confirmPassword ? null : { passwordMismatch: true };
