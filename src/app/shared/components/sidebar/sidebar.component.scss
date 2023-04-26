@@ -13,6 +13,8 @@ $h-desconsiderar: calc($h-spotify-logo + $h-menu-opcoes + $h-footer-user);
   flex-direction: column;
   background-color: #72898C;
   box-shadow: 1px 0px 15px #00000012;
+  position: fixed;
+  height: 100vh;
 
   .menus {
   

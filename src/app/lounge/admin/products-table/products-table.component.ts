@@ -44,6 +44,34 @@ export class ProductsTableComponent {
       });
     }
 
+    getUserProductsComprados(){
+      console.log(this.data._if);
+      this.httpService.getUserProductsComprados(this.data._id).subscribe({
+        next: (res) => {
+          this.dataSource = new MatTableDataSource(res);
+          this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
+          console.log("produtos comprados mostrados com sucesso");
+          
+        },
+        error: console.log,
+      });
+    }
+
+    getUserProductsVendidos(){
+      console.log(this.data);
+      
+      this.httpService.getUserProductsVendidos(this.data._id).subscribe({
+        next: (res) => {
+          this.dataSource = new MatTableDataSource(res);
+          this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator; 
+
+        },
+        error: console.log,
+      });
+    }
+
     ngOnInit(): void {
       this.getUserProducts();
     }

@@ -140,4 +140,15 @@ export class HttpService{
     const newUrl = this.url + `/users/${userId.id}/favorites`;
     return this.http.get<any>(newUrl);
   }
+
+  public getUserProductsComprados(userId:any): Observable<any>{
+    const newUrl = this.url + `/products/produtos-comprados/${userId}`;
+    return this.http.get<any>(newUrl);
+  }
+  public getUserProductsVendidos(userId:any): Observable<any>{
+    
+    const newUrl = this.url + `/products/produtos-vendidos/${userId}`;
+    console.log(newUrl);
+    return this.http.get<any>(newUrl);
+  }
 }

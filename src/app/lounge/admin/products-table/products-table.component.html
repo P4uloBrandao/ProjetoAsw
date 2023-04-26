@@ -1,12 +1,12 @@
 <div mat-dialog-title>
     <h1>Produtos</h1>
-    <button mat-raised-button>
+    <button mat-raised-button (click)="getUserProducts()">
        Venda
       </button>
-      <button mat-raised-button>
+      <button mat-raised-button (click)="getUserProductsVendidos()">
         Vendidos
       </button>
-      <button mat-raised-button >
+      <button mat-raised-button (click)=" getUserProductsComprados()" >
         Comprados
       </button>
 </div>
