@@ -134,4 +134,10 @@ export class HttpService{
     const newUrl = this.url + `/products/${prodId}`;
     return this.http.get<any>(newUrl);
   }
+
+  public getFavoritesProducts(token: string): Observable<any> {
+    const userId : any = jwtDecode(token);
+    const newUrl = this.url + `/users/${userId.id}/favorites`;
+    return this.http.get<any>(newUrl);
+  }
 }

@@ -1,0 +1,9 @@
+<div class="container" *ngIf="favoritos">
+    <div class="row">
+        <div class="col cardContainer">
+            <div class="card" *ngFor="let prod of favoritos"> <app-product-card [product]="prod" (productAdded)="onFavoriteRemove($event)"></app-product-card>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -14,8 +14,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { ProductsComponent } from './products/products.component';
 import { FormsModule } from '@angular/forms';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
-
-
+import { FavoritosComponent } from './favoritos/favoritos.component';
 
 const LOUNGE_ROUTES: Routes = [
   {
@@ -39,10 +38,14 @@ const LOUNGE_ROUTES: Routes = [
         component: CarrinhoComponent,
       },
       {
+        path: 'favorites',
+        component: FavoritosComponent,
+      },
+      {
         path: 'admin',
         loadChildren: () =>
-            import('./admin/admin.module').then((m) => m.AdminModule),
-            canActivate: [AdminGuard],
+          import('./admin/admin.module').then((m) => m.AdminModule),
+        canActivate: [AdminGuard],
       },
       {
         path: '',
@@ -51,8 +54,8 @@ const LOUNGE_ROUTES: Routes = [
       },
       // //   {
       // //     path: 'deals',
-          // loadChildren: () =>
-          //   import('./deals/deals.module').then((m) => m.DealsModule),
+      // loadChildren: () =>
+      //   import('./deals/deals.module').then((m) => m.DealsModule),
       // //     canActivate: [AuthenticatedRouteGuard, LoungeRouteGuard],
       // //   },
       //   {
@@ -70,7 +73,14 @@ const LOUNGE_ROUTES: Routes = [
 ];
 
 @NgModule({
-  declarations: [LoungeComponent, UserComponent, AddProductComponent, ProductsComponent, CarrinhoComponent],
+  declarations: [
+    LoungeComponent,
+    UserComponent,
+    AddProductComponent,
+    ProductsComponent,
+    CarrinhoComponent,
+    FavoritosComponent,
+  ],
   imports: [
     RouterModule.forChild(LOUNGE_ROUTES),
     SharedModule,

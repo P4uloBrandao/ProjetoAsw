@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { HttpService } from '../../httpService/http.service';
 
 @Component({
@@ -10,10 +10,12 @@ export class ProductCardComponent implements OnInit, OnDestroy {
   public seller: any;
   private userToken: any;
   private subscriptions: any = [];
+  private userInfos: any;
+  public favoriteProducts: any;
+  public isFavorite: any = false;
   @Input() product: any;
-  @Input() isFavorite: any = false;
   @Input() isCart: any = false;
-  
+  @Output() productAdded: EventEmitter<any> = new EventEmitter();
 
   constructor(private httpService: HttpService) {
     if (localStorage.getItem('currentUser')) {
@@ -24,6 +26,20 @@ export class ProductCardComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // this.seller = this.httpService.getUserById(this.product.seller);
+    if (this.userToken) {
+      this.httpService.getUserById(this.userToken).subscribe((data: any) => {
+        this.userInfos = data.data;
+        this.favoriteProducts = data.data.favoritos;
+        if (this.favoriteProducts) {
+          console.log(this.favoriteProducts);
+          console.log(this.product._id);
+
+          if (this.favoriteProducts.includes(this.product._id)) {
+            this.isFavorite = true;
+          }
+        }
+      });
+    }
   }
 
   ngOnDestroy() {
@@ -54,8 +70,8 @@ export class ProductCardComponent implements OnInit, OnDestroy {
           .removeFavProduct(this.product._id, this.userToken)
           .subscribe((res: any) => {
             if (res.success) {
-              console.log(res.data);
               this.isFavorite = false;
+              this.productAdded.emit(this.product._id);
             }
           })
       );

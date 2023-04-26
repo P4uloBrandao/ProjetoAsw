@@ -43,14 +43,14 @@
         <div class="section-header">Preferências:</div>
         <div class="card-list">
             <div class="col cardContainer" *ngIf="favoriteProducts">
-                <div class="card" *ngFor="let prod of filterCategory  | filter:searchKey:'title'"> <app-product-card [product]="prod" [isFavorite]="favoriteProducts.includes(prod._id)"></app-product-card></div>
+                <div class="card" *ngFor="let prod of filterCategory  | filter:searchKey:'title'"> <app-product-card [product]="prod"></app-product-card></div>
             </div>
         </div>
       
         <div class="section-header">Todos:</div>
         <div class="card-list">
             <div class="col cardContainer" *ngIf="favoriteProducts">
-                <div class="card" *ngFor="let prod of filterCategory  | filter:searchKey:'title'"> <app-product-card [product]="prod" [isFavorite]="favoriteProducts.includes(prod._id)"></app-product-card></div>
+                <div class="card" *ngFor="let prod of filterCategory  | filter:searchKey:'title'"> <app-product-card [product]="prod"></app-product-card></div>
             </div>
         </div>
       </div>

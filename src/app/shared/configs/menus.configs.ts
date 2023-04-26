@@ -52,7 +52,7 @@ export const MenusSidebar = {
     {
       label: 'Favoritos',
       icon: 'favorite',
-      route: './products',
+      route: './favorites',
     },
     {
       label: 'Carrinho',
