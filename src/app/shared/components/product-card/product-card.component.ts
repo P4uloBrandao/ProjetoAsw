@@ -84,11 +84,15 @@ export class ProductCardComponent implements OnInit, OnDestroy {
         this.httpService
           .addToCart(this.product._id, this.userToken)
           .subscribe((res: any) => {
+            console.log(res);
+            
             if (res.success) {
               console.log(res.data);
             }
-          })
-      );
+          }, (err: any) => {
+            console.log(err);
+          }
+      ));
     }
   }
 }
