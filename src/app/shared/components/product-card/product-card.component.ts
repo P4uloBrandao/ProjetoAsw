@@ -62,7 +62,7 @@ export class ProductCardComponent implements OnInit, OnDestroy {
     }
   }
 
-  public addToCart(): void {
+  public addProductToCart(): void {
     if (this.userToken) {
       this.subscriptions.push(
         this.httpService

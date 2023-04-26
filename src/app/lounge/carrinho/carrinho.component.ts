@@ -10,8 +10,8 @@ export class CarrinhoComponent implements OnDestroy {
   private userToken: any;
   private subscriptions: any = [];
   public products: any;
-  public totalPrice: number=0;
-  public comprado: boolean=false;
+  public totalPrice: number = 0;
+  public comprado: boolean = false;
   constructor(private httpService: HttpService) {
     if (localStorage.getItem('currentUser')) {
       const ls = JSON.parse(localStorage.getItem('currentUser')!);
@@ -19,20 +19,16 @@ export class CarrinhoComponent implements OnDestroy {
     }
     httpService.getProductsFromCart(this.userToken).subscribe((res: any) => {
       if (res.success) {
-        let lista: any=[]
+        let lista: any = [];
         res.carrinho.forEach((element: any) => {
-          
           httpService.getProductById(element._id).subscribe((res: any) => {
             if (res.success) {
-              lista.push(res.data)
-              this.totalPrice+=Number(res.data.price)
-              
-              
+              lista.push(res.data);
+              this.totalPrice += Number(res.data.price);
             }
           });
         });
-        this.products=lista
-        
+        this.products = lista;
       }
     });
   }
@@ -47,18 +43,15 @@ export class CarrinhoComponent implements OnDestroy {
       this.products.forEach((element: any) => {
         this.subscriptions.push(
           this.httpService
-            .buyProductsFromCart(element._id,this.userToken, element.price)
+            .buyProductsFromCart(element._id, this.userToken, element.price)
             .subscribe((res: any) => {
               if (res.success) {
                 console.log(res.data);
-                this.comprado=true;
-  
+                this.comprado = true;
               }
             })
         );
       });
-
-
     }
   }
 }
