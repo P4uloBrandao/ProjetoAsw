@@ -15,7 +15,7 @@
         <div class="d-flex justify-content-between align-items-center mb-3">
           <h4 class="text-right">Profile Settings</h4>
         </div>
-        <form [formGroup]="userForm">
+        <form [formGroup]="userForm" (ngSubmit)="updateUser()">
           <div class="row mt-2">
             <div class="col-md-12">
               <label class="labels">Name</label
@@ -75,7 +75,7 @@
             </div>
           </div>
           <div class="mt-5 text-center">
-            <button class="btn btn-primary profile-button" type="submit">
+            <button class="btn btn-primary profile-button" type="submit" [disabled]="!userForm.valid">
               Save Profile
             </button>
           </div>
@@ -90,24 +90,33 @@
           <span>Preferências</span>
         </div>
         <br />
-        <form [formGroup]="preferenceForm">
-          <div class="col-md-12 select">
+        <form [formGroup]="userForm">
+          <div class="col-md-12 select" *ngIf="categories">
             <label class="labels">Categorias</label
             ><mat-form-field appearance="fill">
               <mat-label>Selecione suas categorias</mat-label>
-              <mat-select multiple color="primary">
-                <mat-option [value]=""></mat-option>
+              <mat-select multiple color="primary" formControlName="categorias">
+                <mat-option *ngFor="let category of categories" [value]="category._id">{{category.name}}</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
-          <div class="col-md-12 select">
+          <div class="col-md-12 select" *ngIf="marcas">
             <label class="labels">Marcas</label
             ><mat-form-field appearance="fill">
               <mat-label>Selecione suas marcas</mat-label>
-              <mat-select multiple color="primary">
-                <mat-option [value]=""></mat-option>
+              <mat-select multiple color="primary" formControlName="marca">
+                <mat-option *ngFor="let marca of marcas" [value]="marca._id">{{marca.name}}</mat-option>
+
               </mat-select>
             </mat-form-field>
+          </div>
+          <div class="col-md-12">
+            <label class="labels">Tamanho</label
+            ><input
+              type="text"
+              class="form-control"
+              formControlName="tamanho"
+            />
           </div>
         </form>
       </div>

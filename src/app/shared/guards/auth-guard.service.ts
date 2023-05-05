@@ -29,6 +29,11 @@ export class AuthGuardService implements CanActivate, OnDestroy{
           localStorage.removeItem('currentUser');
           return false;
         }
+      }, 
+      (error) => {
+        this.router.navigate(['home']);
+        localStorage.removeItem('currentUser');
+        return false;
       });
       return true;
     } else {

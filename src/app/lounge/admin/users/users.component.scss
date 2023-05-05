@@ -1,0 +1,28 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.main-body {
+  padding-top: 20px;
+  margin: 0 auto;
+
+  max-width:1348px;
+  .table-container{
+    background-color:white;
+    color:black;
+  }
+  mat-form-field {
+  
+    width: 100%;
+  }
+
+}
+
+.action {
+  display: flex;
+  gap: 5px;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: white;
+}

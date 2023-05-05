@@ -1,0 +1,21 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>{{product.title}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image *ngIf="product.images[0]" [src]="product.images[0]" alt="Photo of a Shiba Inu">
+    <img mat-card-image *ngIf="!product.images[0]" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+
+    <mat-card-content>
+        <p>
+            preço:{{product.price}}$
+        </p>
+        <p>
+            tamanho:{{product.size}}
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button class="button" *ngIf="!isFavorite && !isCart" (click)="addFavorite()"> <mat-icon>favorite_border</mat-icon></button>
+        <button mat-button class="button" *ngIf="isFavorite && !isCart" (click)="removeFavorite()"> <mat-icon>favorite</mat-icon></button>
+        <button mat-button class="button carrinho" *ngIf="!isCart" (click)="addProductToCart()"> Adicionar ao carrinho</button>
+    </mat-card-actions>
+</mat-card>

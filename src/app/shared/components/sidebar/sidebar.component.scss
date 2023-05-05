@@ -1,54 +1,62 @@
-.site-container {
-    height: 100vh;
-    color: black;
-    background-color: #F5F5F5;
-    width: 100vw;
-    .sidebar {
-      background-color: #72898c;
-      .menus {
-        margin-top: 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        .logo {
-          cursor: pointer;
-          img {
-            width: 100px;
-            height: auto;
-          }
-        }
-        .menu {
-            cursor: pointer;
-            p{
-                border-radius: 5px;
-                mat-icon {
-                    vertical-align: middle;
-                    margin-right: 0.25rem;
+$h-spotify-logo: 120px;
+$h-menu-opcoes: 80px;
+$m-entre-menus: 10px;
+$h-footer-user: 70px;
 
-                }
+$h-desconsiderar: calc($h-spotify-logo + $h-menu-opcoes + $h-footer-user);
 
-                &:hover{
-                    background-color: #5b777a;
-                }
-            }
-        }
-        .logout {
-          cursor: pointer;
-          p{
-              border-radius: 5px;
-              mat-icon {
-                  vertical-align: middle;
-                  margin-right: 0.25rem;
+:host {
+  max-width: 280px;
+  min-height: 100vh;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: #72898C;
+  box-shadow: 1px 0px 15px #00000012;
+  position: fixed;
+  height: 100vh;
 
-              }
+  .menus {
+  
+    flex-direction: column;
+    height: 100%;
+    padding: 0px 40px 0px 40px;
 
-              &:hover{
-                  background-color: #5b777a;
-              }
-          }
-      }
+    .image-container {
+      min-height:50px;
+      
+
+      img {
+        margin-bottom: 50px;
+        width: 80%;
       }
     }
-    .site {
+
+    .menu-container {
+      width: 100%;
+
+      &.flex {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      &.opcoes {
+        min-height: $h-menu-opcoes;
+
+        * {
+          margin-bottom: $m-entre-menus;
+        }
+      }
+
     }
   }
+  .usuario-info {
+    flex-grow: 0;
+    display: block;
+    align-self: flex-end;
+    width: 100%;
+    background-color:#5B777A;
+    margin-top: auto;
+  }
+}

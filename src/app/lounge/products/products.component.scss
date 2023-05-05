@@ -1,0 +1,64 @@
+
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  .card {
+    width: 25%;
+    min-width: 10%;
+  }
+}
+
+.search-hero {
+  max-width: 500px;
+  padding-bottom: 50px;
+  margin:auto;
+}
+
+.form-control {
+  box-shadow: 0 10px 40px 0 #B0C1D9;
+}
+.form-control::placeholder  {
+  font-family: FontAwesome;
+}
+.item{
+  width: 100%;
+  
+  padding: 20px 20px 20px 10px;
+  border-radius: 20px;
+  text-align: center;
+  margin-right:20px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display:flex;
+  
+  span {
+    display: inline-block;
+    vertical-align: middle;
+    width: 150px;
+    white-space: nowrap;
+    margin-left: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  color:rgb(51, 50, 50);
+  background-color: white;
+
+  &.selecionado {
+    background-color:#EEEDED;
+    color:black
+    ;
+  }
+  .container.d-flex{
+    overflow-x: scroll
+  }
+}
+
+.section-header{
+  font-size:2em;
+  margin-top:50px;
+  margin-bottom:50px;
+}

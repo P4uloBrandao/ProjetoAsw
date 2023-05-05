@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { InitialComponent } from './initial.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { CommonModule } from '@angular/common';
 
 const INITIAL_ROUTES: Routes = [
   {
@@ -59,6 +60,7 @@ const INITIAL_ROUTES: Routes = [
     SharedModule,
     ReactiveFormsModule,
     MatSelectModule,
+    CommonModule
   ],
 })
 export class InitialModule {}

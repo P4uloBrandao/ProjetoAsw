@@ -6,9 +6,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { LoungeComponent } from './lounge.component';
 import { UserComponent } from './user/user.component';
-import { AdminComponent } from './admin/admin.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
+import { AdminGuard } from '../shared/guards/admin.guard';
+import { AddProductComponent } from './add-product/add-product.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { ProductsComponent } from './products/products.component';
+import { FormsModule } from '@angular/forms';
+import { CarrinhoComponent } from './carrinho/carrinho.component';
+import { FavoritosComponent } from './favoritos/favoritos.component';
 
 const LOUNGE_ROUTES: Routes = [
   {
@@ -20,8 +26,26 @@ const LOUNGE_ROUTES: Routes = [
         component: UserComponent,
       },
       {
+        path: 'add-products',
+        component: AddProductComponent,
+      },
+      {
+        path: 'products',
+        component: ProductsComponent,
+      },
+      {
+        path: 'cart',
+        component: CarrinhoComponent,
+      },
+      {
+        path: 'favorites',
+        component: FavoritosComponent,
+      },
+      {
         path: 'admin',
-        component: AdminComponent,
+        loadChildren: () =>
+          import('./admin/admin.module').then((m) => m.AdminModule),
+        canActivate: [AdminGuard],
       },
       {
         path: '',
@@ -30,8 +54,8 @@ const LOUNGE_ROUTES: Routes = [
       },
       // //   {
       // //     path: 'deals',
-      // //     loadChildren: () =>
-      // //       import('./deals/deals.module').then((m) => m.DealsModule),
+      // loadChildren: () =>
+      //   import('./deals/deals.module').then((m) => m.DealsModule),
       // //     canActivate: [AuthenticatedRouteGuard, LoungeRouteGuard],
       // //   },
       //   {
@@ -49,7 +73,14 @@ const LOUNGE_ROUTES: Routes = [
 ];
 
 @NgModule({
-  declarations: [LoungeComponent, UserComponent, AdminComponent],
+  declarations: [
+    LoungeComponent,
+    UserComponent,
+    AddProductComponent,
+    ProductsComponent,
+    CarrinhoComponent,
+    FavoritosComponent,
+  ],
   imports: [
     RouterModule.forChild(LOUNGE_ROUTES),
     SharedModule,
@@ -58,6 +89,8 @@ const LOUNGE_ROUTES: Routes = [
     CommonModule,
     MatTableModule,
     MatIconModule,
+    NgxDropzoneModule,
+    FormsModule,
   ],
 })
 export class LoungeModule {}

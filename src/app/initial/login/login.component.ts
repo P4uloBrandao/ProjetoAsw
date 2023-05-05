@@ -22,8 +22,22 @@ export class LoginComponent implements OnInit, OnDestroy {
   ) {}
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.email,
+          Validators.pattern(/^(?:(?!<script)[\s\S])*$/i),
+        ],
+      ],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.pattern(/^(?:(?!<script)[\s\S])*$/i),
+        ],
+      ],
     });
   }
   ngOnDestroy(): void {
@@ -31,7 +45,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.observable.unsubscribe();
     }
   }
-  
+
   onSubmit() {
     const email = this.loginForm.get('email')?.value;
     const password = this.loginForm.get('password')?.value;
@@ -48,7 +62,7 @@ export class LoginComponent implements OnInit, OnDestroy {
               'currentUser',
               JSON.stringify({ email: email, token: response.token })
             );
-            this.router.navigate(['/lounge/user']);
+            this.router.navigate(['lounge/products']);
           } else {
             console.log('Falha no login');
           }

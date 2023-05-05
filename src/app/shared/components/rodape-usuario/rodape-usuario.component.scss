@@ -1,0 +1,27 @@
+div{
+  padding: 10px 20px;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  color:white;
+  border-top: 1px solid;
+  font-size:17px;
+  
+  img {
+    flex-grow: 0;
+    width: 30px;
+    height: auto;
+    border-radius: 50%;
+  }
+
+  .icone {
+    width:30px;
+    cursor: pointer;
+    height:30px;
+    margin-left:50px;
+    padding-top:10px;
+
+   
+  }
+}

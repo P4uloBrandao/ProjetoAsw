@@ -10,9 +10,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {CloudinaryModule} from '@cloudinary/ng';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,6 +28,9 @@ import {CloudinaryModule} from '@cloudinary/ng';
     HttpClientModule,
     MatSidenavModule,
     CloudinaryModule,
+    MatSnackBarModule,
+    FontAwesomeModule
+
  
   ],
   providers: [],

@@ -1,0 +1,116 @@
+<div class="container mx-auto border p-4">
+    <div class="row">
+      <div class="col-12 col-md-8">
+       
+        <form [formGroup]="ProductForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+            <div class="dropfield">
+                <ngx-dropzone (change)="onSelect($event)">
+                    <ngx-dropzone-label>Drop image!</ngx-dropzone-label>
+                    <ngx-dropzone-image-preview 
+                        ngProjectAs="ngx-dropzone-preview" 
+                        *ngFor="let f of files" 
+                        [file]="f"
+                        [removable]="true" (removed)="onRemove(f)"
+                        >
+                        <ngx-dropzone-label>({{ f.type }})</ngx-dropzone-label>
+                    </ngx-dropzone-image-preview>
+                </ngx-dropzone>
+                <div>
+                    <button (click)="onUpload()"> Upload</button>
+                </div>
+            </div>  
+          <div class="form-row">
+            <div class="form-group col-12 col-md-5 mb-3">
+              <label>Nome</label>
+              <input
+                kendoTextBox
+                type="text"
+                class="form-control"
+                placeholder=""
+                formControlName="title"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group col-12 col-md-4 mb-3">
+            <label>Tipo </label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder=""
+              formControlName="type"
+              required
+            />
+          </div>
+  
+          <div class="form-group col-12 col-md-4 mb-3">
+            <label>Descrição</label>
+  
+            <textarea
+              kendoTextArea
+              class="form-control hun mb-3"
+              placeholder=""
+              formControlName="description"
+              required
+            ></textarea>
+          </div>
+          <div class="form-group col-12 col-md-4 mb-3">
+            <label>Preço</label>
+            <div>
+              <input type="number"
+                     formControlName="price"    
+                     [min]="0"
+                     [max]="1000"
+                     style="width: 100%">
+            </div>
+          </div>
+          <div class="form-group col-12 col-md-4 mb-3">
+            <label>Tamanho</label>
+            <div>
+              <select class="form-control" formControlName="size">
+                <option value="X">X</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group col-12 col-md-4 mb-3">
+            <label>Estado</label>
+            <div>
+              <select class="form-control" formControlName="condition">
+                <option value="excellent">Excellent</option>
+                <option value="very good">Very Good</option>
+                <option value="good">Good</option>
+                <option value="satisfactory">Satisfactory</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group col-12 col-md-4 mb-3">
+    
+            <div class="col-md-12 select" *ngIf="categories">
+                <label class="labels">Categoria</label
+                ><mat-form-field appearance="fill">
+                  <mat-label>Categoria do Produto</mat-label>
+                  <mat-select color="primary" formControlName="categories">
+                    <mat-option *ngFor="let category of categories" [value]="category._id">{{category.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+            </div>
+              <div class="col-md-12 select" *ngIf="marcas">
+                <label class="labels">Marca</label>
+                <mat-form-field appearance="fill">
+                      <mat-label>Marca do Produto</mat-label>
+                      <mat-select color="primary" formControlName="brand">
+                        <mat-option *ngFor="let marca of marcas" [value]="marca._id">{{marca.name}}</mat-option>
+                      </mat-select>
+                </mat-form-field>
+              </div>
+          </div>
+          <div class="form-group mx-auto col-12">
+            <button type="submit" [disabled]="ProductForm.invalid">Adicionar Produto</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
