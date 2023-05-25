@@ -1,0 +1,93 @@
+
+.pagar{
+    display:flex;
+    flex-direction: column;
+    margin: 40px;
+  
+    height: 100%;
+    .container {
+        display: flex;
+        margin-left: 45px;
+        margin-right:0px;
+        
+
+        
+        .description-title{
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+            padding: 24px;
+            width:60%;
+            height: 250px;
+        
+            .produto{
+                display:flex;
+                .price-produto{
+                    align-self: flex-end; 
+                    width: 30%;
+                    margin-left: 280px;
+                 
+                    }
+                
+                .produto-dados{
+                    display: flex;
+                    flex-direction:column;
+                }
+                .imagem{
+                    width:100px;
+                    height:100px;
+                    margin-right: 10px;
+                }
+                 
+            }
+        }
+
+        .description-title2{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+            margin-left:20px;
+            padding: 24px;
+            height: 250px;
+            width:30%;
+            
+            .pedido{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+
+                .valor{
+                    width: 70%;
+                    align-self: flex-start; 
+                  }
+                .price{
+                    align-self: flex-end; 
+                    width: 30%;
+                }
+                 
+            }
+        }
+  
+        
+    }
+    
+    .pagamento{
+        padding:0;
+        display: flex;
+        justify-content: flex-start;
+        .favoritos-container{
+            width: 100%;
+        }
+    
+    }
+}
+
+
+
+
+
+ 
+ 
+
+   

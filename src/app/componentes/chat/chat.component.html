@@ -1,0 +1,17 @@
+<div class="container">
+    <table class="table table-hover" *ngIf="loggedUser">
+        <thead>
+            <tr>
+                <th><h2>Conversas</h2></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of Users">
+                <td *ngIf="user.username != loggedUser.data.nome">{{ user.nome }}</td>
+                <td *ngIf="user.username != loggedUser.data.nome"><button
+                        class="btn btn-success button" (click)="goToChatRoom(user)">Chat</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

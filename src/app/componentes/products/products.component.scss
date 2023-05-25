@@ -1,0 +1,11 @@
+:host {
+    display: flex;
+    margin-left: 100px;
+  
+    .products{
+        display: flex;
+        width: 100%;
+        flex-wrap:wrap;
+    }
+}
+  

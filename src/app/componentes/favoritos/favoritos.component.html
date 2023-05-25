@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="favoritos" *ngIf="favoritos.length!=0">
+    <h1 style="color:rgb(126, 124, 124);padding:20px;justify-content: center;">Artigos marcados como favoritos: {{favoritos.length}}</h1>
+      <div class="products" >
+        <app-product-card
+          *ngFor="let prod of favoritos"
+          [product]="prod"
+          (productAdded)="onFavoriteRemove($event)"
+        ></app-product-card>
+      </div>
+  
+  </div>
+  
+  <div class="favoritos2" *ngIf="favoritos.length==0">
+    <h1 style="color:rgb(126, 124, 124);padding:20px;">Não Possui nenhum artigo na lista dos Favoritos</h1>
+    <h3>Marca alguns  artigos como favoritos e encontre-os aqui</h3>
+    <button  (click)="home()" class="botao-submit">Procurar</button>
+  </div>
+  
+</div>
+

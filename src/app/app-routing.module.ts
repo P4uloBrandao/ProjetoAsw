@@ -2,22 +2,26 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from './shared/guards/auth-guard.service';
 import { UnauthenticadedGuard } from './shared/guards/unauthenticaded.guard';
-
+import { LoginComponent } from './componentes/login/login.component';
+import { ProductsComponent } from './componentes/products/products.component';
+import { RegisterComponent } from './componentes/register/register.component';
+import { LandingModule } from './pages/landing/landing.module';
+import { HomeModule } from './pages/home/home.module';
 const routes: Routes = [
   {
-    path: 'initial',
+    path: 'landing',
     loadChildren: () =>
-      import('./initial/initial.module').then((m) => m.InitialModule),
-      canActivate: [UnauthenticadedGuard],
+      import('./pages/landing/landing.module').then((m) => m.LandingModule),
+      // canActivate: [UnauthenticadedGuard],
   },
   {
-    path: 'lounge',
+    path: 'home',
     loadChildren: () =>
-      import('./lounge/lounge.module').then((m) => m.LoungeModule),
-    canActivate: [AuthGuardService],
+      import('./pages/home/home.module').then((m) => m.HomeModule),
+      canActivate: [AuthGuardService],
   },
-  { path: '', redirectTo: 'initial', pathMatch: 'full' },
-  { path: '**', redirectTo: 'initial' },
+  { path: '', redirectTo: 'landing', pathMatch: 'full' },
+  { path: '**', redirectTo: 'landing' },
 ];
 
 @NgModule({

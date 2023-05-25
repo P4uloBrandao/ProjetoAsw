@@ -1,12 +1,12 @@
-import { Injectable, OnDestroy } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
-import { HttpService } from '../httpService/http.service';
-import jwtDecode from 'jwt-decode';
+import { Injectable, OnDestroy } from "@angular/core";
+import { CanActivate, Router } from "@angular/router";
+import { HttpService } from "../httpService/http.service";
+import jwtDecode from "jwt-decode";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
-export class AuthGuardService implements CanActivate, OnDestroy{
+export class AuthGuardService implements CanActivate, OnDestroy {
   private observable: any;
   constructor(private http: HttpService, private router: Router) {}
 
@@ -17,27 +17,29 @@ export class AuthGuardService implements CanActivate, OnDestroy{
   }
 
   canActivate(): boolean {
-    if (localStorage.getItem('currentUser')) {
-      const local: any = 
-        JSON.parse(localStorage.getItem('currentUser')!).token
+    if (localStorage.getItem("currentUser")) {
+      const local: any = JSON.parse(localStorage.getItem("currentUser")!).token;
 
-      this.observable=this.http.getUserById(local).subscribe((response) => {
-        if (response.success) {
-          return true;
-        } else {
-          this.router.navigate(['home']);
-          localStorage.removeItem('currentUser');
+      this.observable = this.http.getUserById(local).subscribe(
+        (response) => {
+          if (response.success) {
+            return true;
+          } else {
+            localStorage.removeItem("currentUser");
+            this.router.navigate(["home"]);
+            return false;
+          }
+        },
+        (error) => {
+          localStorage.removeItem("currentUser");
+          this.router.navigate(["landing/home"]);
           return false;
         }
-      }, 
-      (error) => {
-        this.router.navigate(['home']);
-        localStorage.removeItem('currentUser');
-        return false;
-      });
+      );
       return true;
     } else {
-      this.router.navigate(['home']);
+      localStorage.removeItem("currentUser");
+      this.router.navigate(["landing/home"]);
 
       return false;
     }

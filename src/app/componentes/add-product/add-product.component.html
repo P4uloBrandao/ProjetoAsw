@@ -1,0 +1,126 @@
+<div class="container  ">
+  <div class="titulo">
+    <h1 style="color:rgb(126, 124, 124)">Vender um Artigo</h1>
+  </div>
+  <div class="dropfield">
+    <ngx-dropzone  (change)="onSelect($event)" style="border: 1.4px dashed #8f8f91;">
+        <ngx-dropzone-label style="border:1.5px solid grey;padding:20px"> + Carregar Fotografias</ngx-dropzone-label>
+        <ngx-dropzone-image-preview 
+            ngProjectAs="ngx-dropzone-preview" 
+            *ngFor="let f of files" 
+            [file]="f"
+            [removable]="true" (removed)="onRemove(f)"
+            >
+            <ngx-dropzone-label>({{ f.type }})</ngx-dropzone-label>
+        </ngx-dropzone-image-preview>
+    </ngx-dropzone>
+</div>  
+        <form [formGroup]="ProductForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+          <div class="description-title">
+            <div  class="container-productsForm">
+              <label class="label-field">Título</label>
+              <input
+                kendoTextBox
+                type  ="text"
+                class="input-campo"
+                placeholder="por exemplo: camisola branca da Nike"
+                formControlName="title"
+                required
+              />
+              <div class="error-message" *ngIf="ProductForm.controls['title'].invalid  && submitted">
+                <div *ngIf="ProductForm.controls['title'].errors?.['required']">Este campo é obrigatório.</div>
+              </div>
+            </div>
+
+            <div class="container-productsForm">
+              <label class="label-field">Descrição do Artigo</label>
+  
+              <textarea
+                kendoTextArea
+                class="input-campo"
+                placeholder="por exemplo,usado apenas algumas vezes, tamanho verdadeiro"
+                formControlName="description"
+                required
+              ></textarea>
+              <div class="error-message" *ngIf="ProductForm.controls['description'].invalid  && submitted">
+                <div *ngIf="ProductForm.controls['description'].errors?.['required']">Este campo é obrigatório.</div>
+              </div>
+            </div>
+          </div>
+           
+          <div class="description-title" *ngIf="tipoArtigo">
+            <div class="container-productsForm">
+              <label class="label-field">Tipo de Artigo</label>
+              <select class="select-campo" formControlName="type">
+                <option *ngFor="let tipo of tipoArtigo" [value]="tipo">{{tipo}}</option>
+              </select>
+              <div class="error-message" *ngIf="ProductForm.controls['type'].invalid && submitted ">
+                <div *ngIf="ProductForm.controls['type'].errors?.['required']">Este campo é obrigatório.</div>
+              </div>
+            </div>
+
+            <div class="container-productsForm" *ngIf="tamanhos">
+              <label class="label-field">Tamanho do Artigo</label>
+                <select class="select-campo" formControlName="size">
+                  <option *ngFor="let tamanho of tamanhos" [value]="tamanho">{{tamanho}}</option>
+                </select>
+                <div class="error-message" *ngIf="ProductForm.controls['size'].invalid && submitted">
+                  <div *ngIf="ProductForm.controls['size'].errors?.['required']">Este campo é obrigatório.</div>
+                </div>
+            </div>
+
+            <div class="container-productsForm">
+              <label class="label-field">Estado do Artigo</label>
+                <select class="select-campo"formControlName="condition" >
+                  <option value="excellent">Excelente</option>
+                  <option value="very good">Muito Bom</option>
+                  <option value="good">Bom</option>
+                  <option value="satisfactory">Satisfatório</option>
+                </select>
+                <div class="error-message" *ngIf="ProductForm.controls['condition'].invalid && submitted">
+                  <div *ngIf="ProductForm.controls['condition'].errors?.['required']">Este campo é obrigatório.</div>
+                </div>
+            </div>
+          </div>
+          
+          <div class="description-title">
+            <div class="container-productsForm">
+              <label class="label-field">Preço</label>
+             
+                <input type="number"
+                       formControlName="price"    
+                       [min]="0"
+                       [max]="1000000"
+                       class="input-campo"
+                       placeholder="0,00€"
+                       />
+                       <div class="error-message" *ngIf="ProductForm.controls['price'].invalid && submitted">
+                        <div *ngIf="ProductForm.controls['price'].errors?.['required']">Este campo é obrigatório.</div>
+                        <div *ngIf="ProductForm.controls['price'].errors">Preço ultrapassou o limite.(deve ser 0-100000€)</div>
+                      </div>
+            </div>
+            <div class="container-productsForm" *ngIf="categories">
+                <label class="label-field">Categoria</label>
+                <select class="select-campo"formControlName="categories" >
+                  <option *ngFor="let category of categories" [value]="category._id">{{category.name}}</option>
+                </select>
+                <div class="error-message" *ngIf="ProductForm.controls['categories'].invalid && submitted" >
+                  <div *ngIf="ProductForm.controls['categories'].errors?.['required']">Este campo é obrigatório.</div>
+                </div>
+            </div>
+            <div class="container-productsForm" *ngIf="marcas">
+              <label class="label-field">Marca</label>
+              <select class="select-campo"formControlName="brand">
+                <option class="option-select"  *ngFor="let marca of marcas" [value]="marca._id">{{marca.name}}</option>
+              </select>
+              <div class="error-message" *ngIf="ProductForm.controls['brand'].invalid && submitted">
+                <div *ngIf="ProductForm.controls['brand'].errors?.['required']">Este campo é obrigatório.</div>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit"  class="botao-submit">Carregar</button>
+       
+        </form>
+  </div>
+  

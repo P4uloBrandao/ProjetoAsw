@@ -1,0 +1,41 @@
+<div class="pagar" >
+    <div class="container  ">
+        <div class="description-title" style="width:60%" >
+            <h2>Pedido</h2>
+            <div class="produto">
+                <img  class="imagem" src="{{product.images[0]}}" alt="">
+                <div class="valor">
+                    <h3>{{product.title.toUpperCase()}}</h3>
+                    <span>tamanho:{{product.size}} | condição:{{product.condition.toUpperCase()}}</span>
+                </div>
+                <div class="price-produto"> 
+                    {{product.price}}€
+                </div>
+            </div>
+        </div>
+        <div class="description-title2" >
+            <span> Resumo do Pedido</span>
+            <div class="pedido">
+                <h3 class="valor">Pedido</h3>
+                <h3 class="price">{{product.price}}€</h3>
+            </div>
+            <div class="pedido">
+                <h3 class="valor" >Taxas</h3>
+                <h3 class="price">0,00€</h3>
+            </div>
+            <div class="pedido">
+                <h3 class="valor">Total</h3>
+                <h3 class="price">{{product.price}}€</h3>
+            </div>
+            <button class="submit-button" (click)="efetuarPagamento()">Efetuar Pagamento</button>
+        </div>
+  
+    </div>
+    <div class="pagamento">
+
+    <div class="favoritos-container">
+        <app-favoritos ></app-favoritos>
+    </div>
+</div>
+</div>
+

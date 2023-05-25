@@ -1,0 +1,28 @@
+<!--
+  ! consider combining preferences and all products into one where you list the products they like first than list the rest
+-->
+<mat-card class="card">
+  <img mat-card-image *ngIf="product.images[0]" [src]="product.images[0]" alt="product_img" />
+
+  <mat-card-content>
+    <p>{{ product.title }}</p>
+    <div class="info">
+      <p>€ {{ product.price }}</p>
+      <p>Tamanho: {{ product.size }}</p>
+    </div>
+  </mat-card-content>
+  <mat-card-actions class="actions">
+    <button mat-button class="button" *ngIf="!isFavorite && !isCart" (click)="addFavorite()">
+      <mat-icon class="action">favorite_border</mat-icon>
+    </button>
+    <button mat-button class="button" *ngIf="isFavorite && !isCart" (click)="removeFavorite()">
+      <mat-icon class="action">favorite</mat-icon>
+    </button>
+    <button mat-button   *ngIf="!isOwnProduct" class="button-comprar" (click)="comprarProduto()">
+      Comprar
+    </button>
+    <button mat-button class="button" *ngIf="!isOwnProduct" (click)="goToChatRoom()">
+      <mat-icon class="action">message</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

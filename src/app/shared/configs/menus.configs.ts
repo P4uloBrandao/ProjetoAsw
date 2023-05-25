@@ -1,26 +1,9 @@
 export const MenusSidebar = {
-  initial: [
-    {
-      label: 'Login',
-      icon: 'input',
-      route: './login',
-    },
-    {
-      label: 'Home',
-      icon: 'home',
-      route: './home',
-    },
-    {
-      label: 'Register',
-      icon: 'person_add',
-      route: './register',
-    },
-  ],
-  loungeAdmin: [
+    admin: [
     {
       label: 'User',
       icon: 'person',
-      route: './user',
+      route: '/user',
     },
     {
       label: 'Admin',
@@ -33,37 +16,31 @@ export const MenusSidebar = {
       route: './add-products',
     }
   ],
-  loungeUser: [
+  user: [
     {
       label: 'Home',
       icon: 'home',
-      route: './products',
+      route: '/home/home',
     },
     {
       label: 'Perfil',
       icon: 'person',
-      route: './user',
+      route: '/home/perfil',
     },
     {
       label: 'Vender',
       icon: 'store',
-      route: './add-products',
+      route: '/home/vender',
     },
     {
       label: 'Favoritos',
       icon: 'favorite',
-      route: './favorites',
+      route: '/home/favoritos',
     },
-    {
-      label: 'Carrinho',
-      icon: 'shopping_cart',
-      route: './cart',
-    },
-   
     {
       label: 'Mensagens',
       icon: 'message',
-      route: './products',
+      route: '/home/chat-room',
     }
   ]
 };

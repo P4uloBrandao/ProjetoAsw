@@ -1,0 +1,142 @@
+<div class="userPage">
+  <div class="container " *ngIf="userInfo">
+    <div class="row">
+      <div class="col-md-3 border-right">
+        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+          <div class="profile-picture" [ngClass]="{'male': userInfo.genero === 'M', 'female': userInfo.genero === 'F', 'others':userInfo.genero==='Outro'}">
+            {{ userInfo.nome.charAt(0) }}
+          </div>
+          <span class="font-weight-bold">{{userInfo.nome}}</span
+          ><span class="text-black-50">{{userInfo.email}}</span><span> </span>
+        </div>
+      </div>
+      <div class="col-md-5 border-right">
+        <div class="p-3 py-5">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right">Dados do Utilizador</h4>
+          </div>
+          <form [formGroup]="userForm" (ngSubmit)="updateUser()">
+            <div class="row mt-2">
+              <div class="col-md-12">
+                <label class="labels">Name</label
+                ><input
+                  type="text"
+                  class="form-control"
+                  [placeholder]="userInfo.nome"
+                  formControlName="nome"
+                />
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-12">
+                <label class="labels">Telefone</label
+                ><input
+                  type="text"
+                  class="form-control"
+                  [placeholder]="userInfo.telefone"
+                  formControlName="telefone"
+                />
+              </div>
+              <div class="col-md-12">
+                <label class="labels">Morada</label
+                ><input
+                  type="text"
+                  class="form-control"
+                  [placeholder]="userInfo.morada"
+                  formControlName="morada"
+                />
+              </div>
+              <div class="col-md-12">
+                <label class="labels">Código Postal</label
+                ><input
+                  type="text"
+                  class="form-control"
+                  [placeholder]="userInfo.codigoPostal"
+                  formControlName="codigoPostal"
+                />
+              </div>
+              <div class="col-md-12">
+                <label class="labels">Localidade</label
+                ><input
+                  type="text"
+                  class="form-control"
+                  [placeholder]="userInfo.localidade"
+                  formControlName="localidade"
+                />
+              </div>
+              <div class="col-md-12">
+                <label class="labels">Email</label
+                ><input
+                  type="text"
+                  class="form-control"
+                  [placeholder]="userInfo.email"
+                  formControlName="email"
+                />
+              </div>
+            </div>
+            <div class="mt-5 text-center">
+      
+              <button type="submit"   [disabled]="!userForm.valid" class="botao-submit">Atualizar Perfil</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-4 preferences">
+        <div class="p-3 py-5">
+          <div
+            class="d-flex justify-content-between align-items-center">
+          <h4 class="text-right">Preferências do Utilizador</h4>
+          </div>
+          <br />
+          <form [formGroup]="userForm">
+            <div class="col-md-12 select" *ngIf="categories">
+              <mat-form-field appearance="outline">
+                <mat-label>Selecione categorias</mat-label>
+                <mat-select multiple color="primary" formControlName="categorias">
+                  <mat-option *ngFor="let category of categories" [value]="category._id">{{category.name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-12 select" *ngIf="marcas">
+              <mat-form-field appearance="outline">
+                <mat-label>Selecione marcas</mat-label>
+                <mat-select multiple color="primary" formControlName="marca">
+                  <mat-option *ngFor="let marca of marcas" [value]="marca._id">{{marca.name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-12 select" *ngIf="tamanhos">
+              <mat-form-field appearance="outline">
+                <mat-label>Selecione tamanhos</mat-label>
+                <mat-select multiple color="primary" formControlName="tamanho">
+                  <mat-option *ngFor="let size of tamanhos" [value]="size">{{size}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container2">
+    <div class="favoritos">
+      <h1 style="color:rgb(126, 124, 124);padding:20px;justify-content: center;">Os Seus Artigos {{menuSelecionado}}: {{produtos.length}}</h1>
+      <div class="opcoes">
+        <a class="opcao" (click)="mostrarProdutos(' à venda')" [ngClass]="{'selecionado': menuSelecionado === ' à venda'}">À Venda</a>
+        <a class="opcao" (click)="mostrarProdutos('vendidos')" [ngClass]="{'selecionado': menuSelecionado === 'vendidos'}">Vendidos</a>
+        <a class="opcao" (click)="mostrarProdutos('comprados')" [ngClass]="{'selecionado': menuSelecionado === 'comprados'}">Comprados</a>
+      </div>      
+        <div class="products" style="display:flex;flex-wrap: wrap; margin-left: 90px;"   *ngIf="produtos">
+          <app-product-card
+            *ngFor="let prod of produtos"
+            [product]="prod"
+          ></app-product-card>
+        </div>
+        <div class="products"  *ngIf="produtos.length==0">
+          <h2>Nenhum Produto</h2>
+        </div>
+       
+    </div>
+  </div>
+</div>
+

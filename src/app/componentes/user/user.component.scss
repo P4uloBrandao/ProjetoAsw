@@ -1,0 +1,110 @@
+body {
+    background: rgb(99, 39, 120)
+}
+
+.userPage{
+    display:flex;
+    flex-direction:column;
+
+}
+.container{
+    margin-bottom: 10px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    margin-top:40px
+    
+}
+
+.container2{
+    margin-bottom: 10px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    margin-top:40px;
+    margin-left:120px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.form-control:focus {
+    box-shadow: none;
+    border-color: #72898c
+}
+
+.profile-button {
+    background: #72898c;
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #506163
+}
+
+.labels {
+    font-size: 11px
+}
+
+.form {
+    .preferences{
+        .select {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+*{
+    color: black;
+}
+
+.botao-submit{
+    font-size: 16px;
+    font-weight: 500;
+    height: 44px;
+    line-height: 22px;
+    padding: 0 14px;
+    border-radius:5px;
+    background-color: #0e909e;
+    color:white
+  }
+
+  .profile-picture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    font-size: 36px;
+    color: white;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .male {
+    background-color:rgb(33, 134, 216);
+  }
+  
+  .female {
+    background-color: pink;
+  }
+
+  .opcoes {
+    display: flex;
+     margin-left:35% ;
+  }
+
+  .opcao {
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px;
+    margin-right: 10px;
+    color: #333;
+    cursor: pointer;
+  }
+
+  .opcao:hover {
+    background-color: #eee;
+  }
+
+  .opcao.selecionado {
+    border-bottom: 1px solid rgb(200, 200, 200);
+  }

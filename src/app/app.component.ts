@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MenusSidebar } from './shared/configs/menus.configs';
 
 
 @Component({

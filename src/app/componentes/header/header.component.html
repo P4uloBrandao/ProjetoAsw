@@ -1,0 +1,72 @@
+<!--
+  TODO: add selected functionality to button when clicked
+  TODO: make profile picture and name more dynamic
+  TODO: search should change based on category click
+  ? (Do we want to select more than one category at once?), when we click on a category it focuses but if you click away it loses focus
+  ? set a character limit for user-name
+-->
+<header>
+  <nav class="nav">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="searchTerm"
+      (keyup)="search($event)"
+      placeholder="🔎   Pesquisar..."
+    />
+    <div class="categories">
+      <div
+      tabindex="1"
+      class="category"
+      (click)="getCategory('')">
+      TODOS
+      </div>
+      <div
+        tabindex="1"
+        class="category"
+        *ngFor="let category of categoriesList"
+        (click)="getCategory(category._id)"
+      >
+        {{ category.name.toUpperCase( ) }}
+      </div>
+    </div>
+
+    <div class="categories "  *ngIf="existPreferencias" style="margin-top: 30px; margin-bottom: 10px;">
+      <div  style="margin-right: 10px;" *ngIf="isAuthenticated">
+        As suas Preferências:
+      </div>
+      <ng-container *ngFor="let category of categoriesList">
+        <div
+          tabindex="1"
+          class="category"
+          *ngIf="isPrefered(category._id)">
+          {{ category.name.toUpperCase() }}
+        </div>
+      </ng-container>
+      <ng-container *ngFor="let marca of marcaList">
+        <div
+          tabindex="1"
+          class="category"
+          *ngIf="isPreferedM(marca._id)">
+          {{ marca.name.toUpperCase() }}
+        </div>
+      </ng-container>
+      <ng-container *ngFor="let tamanho of tamanhosPreferencias">
+        <div
+          tabindex="1"
+          class="category">
+          {{ tamanho }}
+        </div>
+      </ng-container>
+    </div>
+  </nav>
+  <div class="user"  *ngIf="isAuthenticated">
+    <div class="profile-picture" [ngClass]="{'male': userInfos.genero === 'M', 'female': userInfos.genero === 'F', 'others':userInfos.genero==='Outro'}">
+      {{ userName.charAt(0) }}
+    </div>
+    <a routerLink="./user" class="user-name">{{userName}}</a>
+  </div>
+
+
+ 
+</header>

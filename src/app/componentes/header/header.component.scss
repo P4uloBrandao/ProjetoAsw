@@ -1,0 +1,128 @@
+:host {
+
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-left: 100px;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px;
+    width: 70%;
+  }
+
+  input {
+    font-size: 12px;
+    padding-left: 2%;
+    height: 40px;
+    width: 60%;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    box-shadow: var(--button-shadow);
+  }
+
+  input:focus {
+    box-shadow: 0px 0px 4px var(--green-background-hover);
+  }
+
+  .categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 10px;
+    flex-wrap: wrap;
+
+    .category {
+      padding-right: 10px;
+      text-decoration: none;
+      text-align: center;
+      height: 30px;
+      width: auto;
+      margin-right: 10px;
+      margin-bottom: 5px;
+      padding: 0 15px;
+      box-shadow: var(--button-shadow);
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+      font-size: 10px;
+      background-color: var(--white-background-color);
+      text-decoration: none;
+      color: var(--font-color);
+    }
+
+    .category:hover, .category:focus {
+      cursor: pointer;
+      box-shadow: 0px 0px 2px var(--green-background-hover);
+      color: var(--green-background-hover);
+    }
+  }
+
+  .user {
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-right: 50px;
+    margin-top: 5px;
+
+    .user-name {
+      font-size: 14px;
+      margin-left: 10px;
+      text-decoration: none;
+      color: var(--font-color-dark);
+    }
+
+    .user-name:hover, .user-name:focus {
+      cursor: pointer;
+      color: var(--green-background-hover);
+    }
+  }
+
+  .botao-submit{
+    font-size: 16px;
+    font-weight: 500;
+    height: 44px;
+    line-height: 22px;
+    padding: 0 14px;
+    border-radius:5px;
+    background-color: #0e909e;
+    color:white
+  }
+
+  .profile-picture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 25px;
+    color: white;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .male {
+    background-color: rgb(33, 134, 216);
+  }
+  
+  .female {
+    background-color: pink;
+  }
+  
+  .others{
+    background-color: rgb(60, 61, 61);
+  }
+}

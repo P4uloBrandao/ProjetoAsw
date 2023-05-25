@@ -1,0 +1,11 @@
+<!--
+  landing page[all products]
+  home page[prefered products + all products]
+  favorites page[favorite products]
+-->
+<div class="products" >
+  <app-product-card
+    *ngFor="let prod of filterCategory | filter : searchKey : ['title', 'type', 'syze','condition']"
+    [product]="prod"
+  ></app-product-card>
+</div>

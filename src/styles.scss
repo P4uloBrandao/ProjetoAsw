@@ -1,4 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --green-background-color: #10646D;
+  --white-background-color: #ffffff;
+  --green-background-hover: #10535b;
+  --button-shadow: 0px 0px 2px #7E7878;
+  --font-color: #7E7878;
+  --font-color-dark: #4c4c4c;
+
+
+}
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: var(--white-background-color);}
+
+.products {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10px;
+  padding-top: 20px;
+}
+
+.main-container {
+  margin:60px 0 0 150px;
+  display: flex;
+  width: auto;
+  overflow-x: hidden;
+}
+
+
+*, ::after, ::before {
+  box-sizing: border-box;
+  color: black;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(to top, #c8eaee, #c4e7eb, #bfe4e8, #bbe2e4, #b7dfe1, #bce0e5, #c1e2e9, #c6e3ec, #d7e9f4, #e8eff9, #f5f7fc, #ffffff);
+  border-radius: 10px;
+  border: 2px solid #f5f5f5;
+}

@@ -1,0 +1,24 @@
+<div class="chatContainer">
+    <div class="lista">
+        <app-chat></app-chat>
+    </div>
+    <div id="mario-chat">
+        <h2>{{ username }}</h2>
+        <div id="chat-window">
+            <div *ngFor="let item of messageArray.reverse()">
+                <p [class.userMessage] = "item.user == this.currentUser._id" [class.secUserMessage]="item.user != this.currentUser._id">
+                    {{ item.message }}
+                    <span class="timestamp">{{ item.timestamp | date:'short' }}</span>   
+                </p>    
+                   
+            </div>
+            <!-- <div id="feedback"></div> -->
+        </div>
+        <div class="send" style="display: flex;">
+            <input  (keypress)="typing()" [(ngModel)]="message" name="message" type="text" placeholder="Message" />            
+            <button  id="send" (click)="sendMessage()"><mat-icon>send</mat-icon></button> 
+        </div>
+       
+    </div>
+</div>
+

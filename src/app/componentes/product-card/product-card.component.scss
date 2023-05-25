@@ -1,0 +1,56 @@
+.card {
+  min-width: 150px;
+  max-width: 250px;
+  margin: 0 10px 10px 0;
+  padding-top: 20px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  .button {
+    background-color: transparent;
+    border: none;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+  }
+
+  img {
+    height: 200px;
+    max-width: 200px;
+    margin-bottom: 5px;
+  }
+
+  .actions {
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    .button-comprar {
+      background-color: transparent;
+      border: 1.5px solid black;
+      border-radius: 15px;
+      &:hover {
+        background-color: black;
+        color: white;
+      }
+    }
+  }
+  .action {
+    margin-left: 0px;
+    padding-left: 0;
+  }
+
+  .button {
+    margin-left: -12px;
+    padding-left: 0;
+  }
+  
+}

@@ -1,0 +1,17 @@
+<div class="side-nav">
+  <div class="logo">
+    <img src="../../../../assets/logo.png" alt="logo_img" />
+  </div>
+  <div class="nav-items">
+    <a
+      *ngFor="let menu of MENUS"
+      class="linkBtn"
+      [routerLink]="menu.route"
+    >
+      <mat-icon class="nav-item">{{ menu.icon }}</mat-icon>
+    </a>
+  </div>
+  <a class="linkBtn" (click)="logout()">
+    <mat-icon class="nav-item">logout</mat-icon>
+  </a>
+</div>

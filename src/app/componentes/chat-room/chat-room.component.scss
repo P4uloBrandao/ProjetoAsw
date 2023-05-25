@@ -1,0 +1,163 @@
+
+h2{
+    font-size: 18px;
+    padding: 10px 20px;
+    color: #0D570D;
+    width:100%;
+}
+
+#mario-chat{
+    width: 80%;
+    border: none;
+    margin-left: 80px;
+    margin-right: 0;
+    padding: 0;
+}
+
+#chat-window{
+    display: flex;
+    height: 80%;
+    width:80%;
+    overflow: auto;
+    background: #E2E2E2;
+    flex-direction: column-reverse; 
+}
+
+#output p{
+    padding: 14px 0px;
+    margin: 0 20px;
+    border-bottom: 1px solid #e9e9e9;
+    color: #555;
+}
+
+#output {
+    height: 500px;
+    display: flex; /* Adicionar um display flex para ajustar a direção das mensagens */
+    flex-direction: column-reverse;
+}
+
+#feedback p{
+    color: #aaa;
+    padding: 14px 0px;
+    margin: 0 20px;
+}
+
+.chat-output {
+    height: 500px;
+}
+
+
+label{
+    box-sizing: border-box;
+    display: block;
+    padding: 10px 20px;
+}
+
+input{
+    padding: 10px 20px;
+    box-sizing: border-box;
+    background: #eee;
+    border: 0;
+    display: block;
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    font-family: Nunito;
+    font-size: 16px;
+    width:70%;
+}
+
+#send{
+    background: white;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    padding: 12px 0;
+    width: 10%;
+    cursor: pointer;
+ 
+}
+#send:hover{
+    background: rgb(143, 177, 147);
+    font-size: 30px;
+}
+
+#leave {
+    background: skyblue;
+    color: #fff;
+    font-size: 18px;
+    border: 0;
+    padding: 12px 0;
+    width: 100%;
+    border-radius: 0 0 2px 2px;
+}
+
+.userMessage {
+    word-wrap: break-word;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+    width: fit-content;
+    background-color: #5B9B5B;
+    padding: 10px 10px;
+    border-radius: 5px;
+    margin-top: 1px;
+    color: white;
+    align-self: flex-start;
+    margin-left:auto;
+    
+    .timestamp {
+        font-size: 12px;
+        color:white;
+        text-align: right;
+    }
+
+
+}
+
+.secUserMessage {
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    max-width: 50%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 1px;
+    color: black;
+
+    .timestamp {
+        font-size: 12px;
+        color: #888;
+        text-align: right;
+    }
+}
+
+.isTyping {
+    color: #888787;
+    padding-left: 5px;
+
+}
+
+.chatContainer{
+    display: flex;
+    margin-top:50px;
+    width:80%;
+    height: 600px;
+    margin-left: 100px;
+    display: flex;
+    margin-bottom: 10px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    width: 70%;
+    margin-top:30px;
+    
+
+
+}
+
+.lista{
+    width: 20%;
+    margin-right:20px;
+}
